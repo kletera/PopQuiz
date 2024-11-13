@@ -1,0 +1,72 @@
+.monCompteTitles{
+    border-bottom: 2px solid #343A40;
+    width: 48%;
+}
+
+.statisticBox{
+    background-color: #343A40;
+    color: white;
+    height: 100px;
+    justify-items: center;
+    align-content: center;
+    border-radius: 0.5ch;
+}
+
+.marginRight{
+    margin-right: 5%;
+}
+
+.paddingLeftRight{
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+.btnNormal{
+    border: #F7A60F 2px solid !important;
+    color: #F7A60F !important;
+    font-weight: 500 !important;
+}
+
+.btnNormal:hover{
+    color: white !important;
+    font-weight: 500 !important;
+    background-color: #F7A60F !important;
+}
+
+.tabWording{
+    text-align: center;
+    align-self: center;
+    background-color: #343A40;
+    border-left: 1px white solid;
+    border-right: 1px white solid;
+    border-top-left-radius: 0.5ch;
+    border-top-right-radius: 0.5ch;
+    color: white;
+    padding: 1%;
+}
+.tabWordingLeft{
+    text-align: center;
+    align-self: center;
+    background-color: #343A40;
+    border-right: 1px white solid;
+    border-top-left-radius: 0.5ch;
+    border-top-right-radius: 0.5ch;
+    color: white;
+    padding: 1%;
+}
+.tabWordingRight{
+    text-align: center;
+    align-self: center;
+    background-color: #343A40;
+    border-left: 1px white solid;
+    border-top-left-radius: 0.5ch;
+    border-top-right-radius: 0.5ch;
+    color: white;
+    padding: 1%;
+}
+
+.quizInfos{
+    border: 1px #343A40 solid;
+    text-align: center;
+    align-self: center;
+}
