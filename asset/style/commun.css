@@ -1,5 +1,3 @@
-
-
 /* Header */
 header{
     background-color: #343A40;
@@ -12,6 +10,9 @@ nav{
 nav ul{
     display: flex;
     list-style: none;
+}
+nav ul a{
+    margin-right: 10px;
 }
 .imgNav{
     width: 57px;
