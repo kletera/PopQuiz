@@ -1,0 +1,43 @@
+/* Header */
+header{
+    background-color: #343A40;
+}
+nav{
+    display: flex; 
+    justify-content: space-between;
+    padding: 5px;
+}
+nav ul{
+    display: flex;
+    list-style: none;
+}
+.imgNav{
+    width: 57px;
+    height: 57px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.quizz{ 
+    background-image: url("../img/IconeQuizBlanc.png");
+}
+.quizz:hover{
+    background-image: url("../img/IconeQuizOrange.png");
+}
+.compte{
+    background-image: url("../img/CompteBlanc.png");
+}
+.compte:hover{
+    background-image: url("../img/CompteOrange.png");
+}
+
+.deco{
+    background-image: url("../img/DecoBlanc.png");
+}
+.deco{
+    background-image: url("../img/DecoOrange.png");
+}
+
+
+
+
+/* Footer */
