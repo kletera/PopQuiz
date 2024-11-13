@@ -1,46 +1,56 @@
-.disNone{
+.disNone {
     display: none;
 }
 
 
 /* Header */
-header{
+header {
     background-color: #343A40;
 }
-nav{
-    display: flex; 
+
+nav {
+    display: flex;
     justify-content: space-between;
     padding: 5px;
 }
-nav ul{
+
+nav ul {
     display: flex;
     list-style: none;
 }
-nav ul a{
+
+nav ul a {
     margin-right: 10px;
 }
-.imgNav{
+
+.imgNav {
     width: 57px;
     height: 57px;
     background-size: contain;
     background-repeat: no-repeat;
 }
-.quizz{ 
+
+.quizz {
     background-image: url("../img/IconeQuizBlanc.png");
 }
-.quizz:hover{
+
+.quizz:hover {
     background-image: url("../img/IconeQuizOrange.png");
 }
-.compte{
+
+.compte {
     background-image: url("../img/CompteBlanc.png");
 }
-.compte:hover{
+
+.compte:hover {
     background-image: url("../img/CompteOrange.png");
 }
-.deco{
+
+.deco {
     background-image: url("../img/DecoBlanc.png");
 }
-.deco:hover{
+
+.deco:hover {
     background-image: url("../img/DecoOrange.png");
 }
 
@@ -48,3 +58,50 @@ nav ul a{
 
 
 /* Footer */
+
+.linkFooter {
+    a {
+        font-size: 130%;
+    }
+}
+
+@media (min-width: 768px) {
+    .logoFooter {
+        width: 20%;
+    }
+}
+
+@media (max-width: 960px) {
+    .linkFooter {
+        a {
+            font-size: 120%;
+        }
+    }
+    .siteNameFooter {
+        font-size: 140%;
+    }
+}
+
+@media (max-width: 880px) {
+    .linkFooter {
+        a {
+            font-size: 110%;
+        }
+    }
+    .siteNameFooter {
+        font-size: 130%;
+    }
+}
+
+@media (max-width: 800px) {
+    .linkFooter {
+    flex-wrap: wrap;
+    margin-left: 20px;
+    }
+}
+
+@media (max-width: 660px) {
+    .linkFooter {
+    margin-left: 40px;
+    }
+}
