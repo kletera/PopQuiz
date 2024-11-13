@@ -12,7 +12,8 @@ $path = isset($url['path']) ? $url['path'] : '/';
 //test de la valeur $path dans l'URL et import de la ressource
 switch ($path) {
 
-    case $path === "/PopQuiz/";
+    case $path === "/PopQuiz/":
+        include './controler/accueil.php';
         include './view/view_header.php';
         include './view/view_acceuil.html';
         include './view/view_footer.html';
@@ -35,6 +36,10 @@ switch ($path) {
         break;
     case $path === "/PopQuiz/deconnexion";
         include "./controler/deco.php";
+        break;
+    //page pardefault
+    default :
+        echo '404';
         break;
 
 

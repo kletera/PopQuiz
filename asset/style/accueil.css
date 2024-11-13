@@ -1,0 +1,38 @@
+.titleCo{
+    display: flex; 
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.backColorOrange{
+    background-color: #F7A60F;
+}
+.backColorBlack{
+    background-color: #343A40;
+}
+
+
+
+/* Bouton enregistrer */
+.InEnregistrer{
+    width: 100%;
+    border: solid 2px #343A40;
+    border-radius: 5px;
+    background-color: #F7A60F;
+    color: #343A40;
+    font-weight: 500 !important;
+}
+
+.CoEnregistrer{
+    width: 100%;
+    border: solid 2px #F7A60F;
+    border-radius: 5px;
+    background-color: #343A40;
+    color: #F7A60F;
+    font-weight: 500 !important;
+}
+
+.CoEnregistrer:hover{
+    color: white !important;
+    font-weight: 500 !important;
+    background-color: #F7A60F !important;
+}
