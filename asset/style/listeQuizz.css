@@ -1,0 +1,60 @@
+h1{
+    text-align: center;
+    padding: 10px;
+}
+.dot {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: white;
+    border-radius: 50%;
+    border: 1px solid #343A40;
+    display: inline-block;
+}
+
+.container img{
+   width: 200px;
+    height: 150px;
+
+}
+.dotMoyenne {
+    background-color: #F7A60F;
+}
+
+.dotDifficile {
+    background-color: #E94C39;
+}
+
+.dotFacile{
+    background-color: #8BC04C;
+
+}
+.cardQuiz{
+    border: 2px solid #343A40;
+}
+.cardQuiz:hover{
+    border-color: #F7A60F ;
+    .info{
+        border-color: #F7A60F
+    }
+    .time{
+        border-color: #F7A60F
+    }
+}
+
+.info{
+    border-left: 2px solid #343A40;
+    text-align: center;
+
+}
+.info .time{
+    border-bottom: 2px solid #343A40;
+}
+
+@media (max-width:760px){
+    img{
+        width: 40%;
+        float: left;
+    }
+ 
+}
