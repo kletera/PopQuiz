@@ -13,20 +13,20 @@ $path = isset($url['path']) ? $url['path'] : '/';
 switch ($path) {
 
     case $path === "/PopQuiz/":
-        include './view/view_header.html';
+        include './view/view_header.php';
         include './view/view_acceuil.html';
         include './view/view_footer.html';
         break;
     case $path === "/PopQuiz/moncompte":
-        include './view/view_header.html';
+        include './view/view_header.php';
         include './view/view_footer.html';
         break;
     case $path === "/PopQuiz/listequiz":
-        include './view/view_header.html';
+        include './view/view_header.php';
         include './view/view_footer.html';
         break;
     case $path === "/PopQuiz/quiz1":
-        include './view/view_header.html';
+        include './view/view_header.php';
         include './view/view_footer.html';
         break;
     case $path === "/PopQuiz/deconnexion":
