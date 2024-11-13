@@ -6,7 +6,7 @@ session_start();
 session_destroy();
 
 //Je redirige vers la page d'accueil index.php
-header('');
+header('Location:/PopQuiz/deconnexion');
 exit;
 
 
