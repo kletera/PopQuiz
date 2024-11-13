@@ -1,3 +1,5 @@
+
+
 /* Header */
 header{
     background-color: #343A40;
@@ -29,11 +31,10 @@ nav ul{
 .compte:hover{
     background-image: url("../img/CompteOrange.png");
 }
-
 .deco{
     background-image: url("../img/DecoBlanc.png");
 }
-.deco{
+.deco:hover{
     background-image: url("../img/DecoOrange.png");
 }
 
