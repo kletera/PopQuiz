@@ -4,17 +4,21 @@
 
     <aside>
         <div class="accordion" id="accordionPanelsStayOpenExample">
-            <h3>Filtrer :</h3>
+            <h4>Filtrer :</h4>
 
-            <form class="d-flex mb-2 mt-3" role="search">
-            <button class="btn btn-outline-light" disabled="true" type="submit">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                        class="bi bi-search loupeDeco mb-1" style="border : 2px" viewBox="0 0 16 16">
+            <form class="container-fluid mb-2 p-0">
+                <div class="input-group">
+                    
+                    <span class="input-group-text" id="basic-addon1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                        class="bi bi-search loupeDeco" viewBox="0 0 16 16">
                         <path
                             d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
                     </svg>
-                </button>
-                <input class="form-control" type="search" placeholder="Recherche" aria-label="Search">
+                    </span>
+                    <input type="text" class="form-control" placeholder="Recherche" aria-label="Recherche"
+                        aria-describedby="basic-addon1">
+                </div>
             </form>
 
             <div class="accordion-item">
@@ -98,6 +102,12 @@
                                     <br>
                                     <input type="checkbox" id="45minutes" name="45minutes" />
                                     <label for="45minutes">Expression Écrite</label>
+                                    <br>
+                                    <input type="checkbox" id="20minutes" name="20minutes" />
+                                    <label for="20minutes">Vocabulaire</label>
+                                    <br>
+                                    <input type="checkbox" id="20minutes" name="20minutes" />
+                                    <label for="20minutes">Grammaire</label>
                                 </div>
                             </div>
                         </div>
@@ -173,7 +183,7 @@
                                     <label for="20minutes">CSS</label>
                                     <br>
                                     <input type="checkbox" id="20minutes" name="20minutes" />
-                                    <label for="20minutes">JS</label>
+                                    <label for="20minutes">JavaScript</label>
                                     <br>
                                     <input type="checkbox" id="20minutes" name="20minutes" />
                                     <label for="20minutes">Bootstrap</label>
@@ -205,7 +215,10 @@
                                         Cahier des charges</label>
                                     <br>
                                     <input type="checkbox" id="20minutes" name="20minutes" />
-                                    <label for="20minutes">Diagrammes</label>
+                                    <label for="20minutes">Scrub</label>
+                                    <br>
+                                    <input type="checkbox" id="20minutes" name="20minutes" />
+                                    <label for="20minutes">Agile</label>
                                 </div>
                             </div>
                         </div>
@@ -274,10 +287,17 @@
         </div>
     </aside>
 
-
-    <article class="listeQuizz">
+    <article class="listeQuizzle">
         <section>
-            <div class="container">
+            <div class="container" id="quizContainer">
+
+            </div>
+        </section>
+    </article>
+
+    <!-- <article class="listeQuizz">
+        <section>
+            <div class="container" id="quizContainer">
                 <div class=" mb-3 cardQuiz ">
                     <div class="row g-0">
                         <div class="col-md-2">
@@ -536,5 +556,5 @@
                 </div>
             </div>
         </section>
-    </article>
+    </article> -->
 </main>
