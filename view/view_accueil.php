@@ -1,3 +1,4 @@
+<script src="./asset/script/api.js" defer></script>
 <main>
     <h2 class="mt-5" style="text-align: center;">VEUILLEZ VOUS CONNECTER POUR ACCEDER AUX QUIZZS</h2>
     <!-- Card -->
