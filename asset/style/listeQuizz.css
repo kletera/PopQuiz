@@ -1,7 +1,8 @@
-h1{
+h1 {
     text-align: center;
     padding: 10px;
 }
+
 .dot {
     height: 15px;
     width: 15px;
@@ -12,11 +13,12 @@ h1{
     display: inline-block;
 }
 
-.container img{
-   width: 200px;
+.container img {
+    width: 200px;
     height: 150px;
 
 }
+
 .dotMoyenne {
     background-color: #F7A60F;
 }
@@ -25,36 +27,57 @@ h1{
     background-color: #E94C39;
 }
 
-.dotFacile{
+.dotFacile {
     background-color: #8BC04C;
 
 }
-.cardQuiz{
+
+.cardQuiz {
     border: 2px solid #343A40;
 }
-.cardQuiz:hover{
-    border-color: #F7A60F ;
-    .info{
+
+.cardQuiz:hover {
+    border-color: #F7A60F;
+
+    .info {
         border-color: #F7A60F
     }
-    .time{
+
+    .time {
         border-color: #F7A60F
     }
 }
 
-.info{
+.info {
     border-left: 2px solid #343A40;
     text-align: center;
 
 }
-.info .time{
+
+.info .time {
     border-bottom: 2px solid #343A40;
 }
 
-@media (max-width:760px){
-    img{
+@media (max-width:760px) {
+    img {
         width: 40%;
         float: left;
     }
- 
 }
+
+#accordionPanelsStayOpenExample{
+    width: 250px;
+    position: absolute;
+    margin-left: 20px;
+    background-color: #F7A60F;
+    padding: 7px;
+    h3{
+        color: white;
+    }
+}
+
+/* .loupeDeco{
+    border: 1px solid black !important;
+    padding : 6px 12px;
+} */
+
