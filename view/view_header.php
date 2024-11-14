@@ -13,7 +13,7 @@
     <header>
         <nav>
             <img src="./asset/img/logoAdrar.png" alt="Logo Adrar" height="82px">
-            <h1 style="color: white; align-content: center;">NUMERIQUIZZ</h1>
+            <h1>NUMERIQUIZZ</h1>
             <ul style="margin: 0; align-items: center;">
                 <a href="/PopQuiz/listequiz" class="imgNav quizz "></a>
                 <a href="/PopQuiz/moncompte" class="imgNav compte"></a>
