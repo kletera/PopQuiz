@@ -24,7 +24,6 @@ switch ($path) {
         include './view/view_compte.php';
         include './view/view_footer.html';
         break;
-
     case $path === "/PopQuiz/listequiz":
         include './controler/listQuiz.php';
         include './view/view_header.php';
