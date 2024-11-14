@@ -34,6 +34,8 @@ h1 {
 
 .cardQuiz {
     border: 2px solid #343A40;
+    border-radius: 0.5ch;
+    margin-bottom: 10px;
 }
 
 .cardQuiz:hover {
@@ -67,17 +69,13 @@ h1 {
 
 #accordionPanelsStayOpenExample{
     width: 250px;
-    position: absolute;
+    position: relative;
     margin-left: 20px;
     background-color: #F7A60F;
-    padding: 7px;
+    padding: 8px;
+    border-radius: 0.5ch;
     h3{
-        color: white;
+        color: black;
     }
 }
-
-/* .loupeDeco{
-    border: 1px solid black !important;
-    padding : 6px 12px;
-} */
 
