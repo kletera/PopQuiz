@@ -15,7 +15,7 @@ switch ($path) {
     case $path === "/PopQuiz/":
         include './controler/accueil.php';
         include './view/view_header.php';
-        include './view/view_acceuil.html';
+        include './view/view_acceuil.php';
         include './view/view_footer.html';
         break;
     case $path === "/PopQuiz/moncompte";
