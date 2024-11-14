@@ -64,3 +64,20 @@ h1 {
         float: left;
     }
 }
+
+#accordionPanelsStayOpenExample{
+    width: 250px;
+    position: absolute;
+    margin-left: 20px;
+    background-color: #F7A60F;
+    padding: 7px;
+    h3{
+        color: white;
+    }
+}
+
+/* .loupeDeco{
+    border: 1px solid black !important;
+    padding : 6px 12px;
+} */
+
