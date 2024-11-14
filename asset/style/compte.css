@@ -70,3 +70,37 @@
     text-align: center;
     align-self: center;
 }
+
+.green{
+    border-radius: 50%;
+    background-color: green;
+    width: 15px;
+    height: 15px;
+    align-self: center;
+    margin-right: 5px;
+}
+.orange{
+    border-radius: 50%;
+    background-color: orange;
+    width: 15px;
+    height: 15px;
+    align-self: center;
+    margin-right: 5px;
+}
+.red{
+    border-radius: 50%;
+    background-color: red;
+    width: 15px;
+    height: 15px;
+    align-self: center;
+    margin-right: 5px;
+}
+
+.pastille{
+    display: flex;
+    justify-content: center;
+}
+
+.maxWidthContainer{
+    max-width: 600ch;
+}
