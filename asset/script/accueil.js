@@ -5,7 +5,6 @@ const connexion=document.querySelector("#connexion");
 const swich=document.querySelector("#flexSwitchCheckDefault");
 
 swich.addEventListener('click',()=>{
-    console.log(swich.checked);
     if(swich.checked!='true'){
         connexion.classList.toggle('disNone');
         inscription.classList.toggle('disNone');

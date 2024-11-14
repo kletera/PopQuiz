@@ -115,7 +115,11 @@ nav ul a {
         font-size: 130%;
     }
 }
-
+@media (min-width: 800px){
+    footer{
+        max-height: 100px;
+    }
+}
 @media (max-width: 800px) {
     .linkFooter {
     flex-wrap: wrap;
