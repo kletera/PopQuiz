@@ -101,6 +101,7 @@
     justify-content: center;
 }
 
-.maxWidthContainer{
-    max-width: 600ch;
+#maxWidthContainer{
+    max-width: 100px;
+    background-color: #F7A60F;
 }
