@@ -16,7 +16,7 @@
                             d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
                     </svg>
                     </span>
-                    <input type="text" class="form-control" placeholder="Recherche" aria-label="Recherche"
+                    <input type="text" id="searchInput" class="form-control" placeholder="Rechercher un quiz ..." aria-label="Recherche"
                         aria-describedby="basic-addon1">
                 </div>
             </form>
@@ -32,12 +32,15 @@
                 <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse">
                     <div class="accordion-body">
                         <input type="checkbox" id="facile" name="facile" />
+                        <span class="dot dotFacile mt-2"> </span>
                         <label for="facile">Facile</label>
                         <br>
                         <input type="checkbox" id="moyenne" name="moyenne" />
-                        <label for="moyenne">Moyenne</label>
+                        <span class="dot dotMoyenne mt-2"> </span>
+                        <label for="moyenne ">Moyenne</label>
                         <br>
                         <input type="checkbox" id="difficile" name="difficile" />
+                        <span class="dot dotDifficile mt-2"> </span>
                         <label for="difficile">Difficile</label>
                     </div>
                 </div>
@@ -53,13 +56,13 @@
                 <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse">
                     <div class="accordion-body">
                         <input type="checkbox" id="Grammar" name="Grammar" />
-                        <label for="Grammar">
+                        <label for="<15">
                             < 15 min</label>
                                 <br>
-                                <input type="checkbox" id="20minutes" name="20minutes" />
+                                <input type="checkbox" id="15-30" name="20minutes" />
                                 <label for="20minutes">15min - 30min</label>
                                 <br>
-                                <input type="checkbox" id="45minutes" name="45minutes" />
+                                <input type="checkbox" id="<30" name="45minutes" />
                                 <label for="45minutes">> 30min</label>
                     </div>
                 </div>

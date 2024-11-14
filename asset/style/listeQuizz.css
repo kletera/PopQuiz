@@ -36,6 +36,12 @@ h1 {
     border: 2px solid #343A40;
     border-radius: 0.5ch;
     margin-bottom: 10px;
+    img{
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+        object-position : center;
+    }
 }
 
 .cardQuiz:hover {
@@ -53,7 +59,6 @@ h1 {
 .info {
     border-left: 2px solid #343A40;
     text-align: center;
-
 }
 
 .info .time {
@@ -69,7 +74,7 @@ h1 {
 
 #accordionPanelsStayOpenExample{
     width: 250px;
-    position: relative;
+    position: absolute;
     margin-left: 20px;
     background-color: #F7A60F;
     padding: 8px;
