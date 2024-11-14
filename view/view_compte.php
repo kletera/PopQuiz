@@ -1,6 +1,6 @@
 <h1 class="text-center m-3">Mon Compte</h1>
 
-<div class="container maxWidthContainer">
+<div class="container" id="maxWidthContainer">
     <h2 class="monCompteTitles mt-3">Vos Informations</h2>
     <form class="row">
         <div class="col-6">

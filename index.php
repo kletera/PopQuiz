@@ -30,7 +30,9 @@ switch ($path) {
         include './view/view_listeQuizz.php';
         include './view/view_footer.html';
         break;
-    case $path === "/PopQuiz/quiz1";
+    case $path === "/PopQuiz/quizz1";
+        include './controler/quizz1.php';
+        include './view/view_quizz1.php';
         include './view/view_header.php';
         include './view/view_footer.html';
         break;
