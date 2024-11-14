@@ -1,5 +1,3 @@
-
-
 <main>
     <h1>Liste des quizz</h1>
     <div class="container">
