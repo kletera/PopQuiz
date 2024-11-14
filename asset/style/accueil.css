@@ -1,16 +1,31 @@
-.titleCo{
-    display: flex; 
-    justify-content: center;
-    margin-bottom: 20px;
-}
 .backColorOrange{
     background-color: #F7A60F;
 }
 .backColorBlack{
     background-color: #343A40;
 }
+article,.imgAcc{
+    height: 405px;
+}
+.btSwitch{
+    margin: 5px 10px;
 
+    padding: 0;
+    align-content: center;
+}
+#inscription{
+    padding: 25px 70px 50px ;
+}
+#connexion{
+    margin-top: 60px;
+    padding: 0 70px;
+}
 
+@media screen and (max-width: 768px){
+    .imgT{
+        display: none;
+    }
+}
 
 /* Bouton enregistrer */
 .InEnregistrer{
@@ -35,4 +50,10 @@
     color: white !important;
     font-weight: 500 !important;
     background-color: #F7A60F !important;
+}
+footer{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
 }

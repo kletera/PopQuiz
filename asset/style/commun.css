@@ -13,22 +13,45 @@ nav {
     justify-content: space-between;
     padding: 5px;
 }
+nav h1{
+    margin: 0;
+    color: white;
+    align-content: center;
+}
 
 nav ul {
     display: flex;
     list-style: none;
+    padding: 5px;
 }
 
 nav ul a {
     margin-right: 10px;
 }
-
 .imgNav {
     width: 57px;
     height: 57px;
     background-size: contain;
     background-repeat: no-repeat;
 }
+@media screen and (max-width: 530px){
+    nav h1{
+        font-size: 1em;
+    }
+    nav img{
+        height: 60px;
+    }
+}
+@media screen and (max-width: 415px){
+    nav img{
+        height: 50px;
+    }
+    .imgNav{
+        width: 40px;
+        height: 40px;
+    }
+}
+
 
 .quizz {
     background-image: url("../img/IconeQuizBlanc.png");
