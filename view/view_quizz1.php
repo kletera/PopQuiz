@@ -1,10 +1,10 @@
 <main>
     <h1>Les bases de HTML</h1>
     <div class="questionNumbers">
-        <div class="number past">
+        <div class="number active">
             <p>1</p>
         </div>
-        <div class="number active">
+        <div class="number ">
             <p>2</p>
         </div>
         <div class="number">
@@ -36,7 +36,7 @@
     <article>
         <section>
             <div class="quizz1">
-                <h4>Question N°2</h4>
+                <h4>Question N°1</h4>
                 <div class="container">
                     <p class="question">Quel attribut HTML est utilisé pour faire en sorte qu'un champ de saisie soit
                         obligatoire ?</p>
