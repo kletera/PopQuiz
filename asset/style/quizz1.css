@@ -25,6 +25,7 @@ main h1 {
     flex-direction: row;
     gap: 10px;
     justify-content: center;
+    margin-bottom: 20px;
 }
 
 .number p {
@@ -36,10 +37,10 @@ main h1 {
     border-radius: 5px;
 }
 
-.past p {
+/* .past p {
     border-color: #F7A60F;
     color: #F7A60F;
-}
+} */
 
 .active p {
     background-color: #F7A60F;
@@ -65,7 +66,7 @@ main h1 {
     flex-direction: row;
     justify-content: center;
     gap: 595px;
-    margin-top: 10px;
+    margin-top: 30px;
 }
 
 .bFoward {

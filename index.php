@@ -24,6 +24,12 @@ switch ($path) {
         include './view/view_compte.php';
         include './view/view_footer.html';
         break;
+    case $path === "/PopQuiz/moncompteAdmin";
+        include "./controler/compteAdmin.php";
+        include './view/view_header.php';
+        include './view/view_compte_admin.php';
+        include './view/view_footer.html';
+        break;
     case $path === "/PopQuiz/listequiz":
         include './controler/listQuiz.php';
         include './view/view_header.php';
@@ -34,6 +40,12 @@ switch ($path) {
         include './controler/quizz1.php';
         include './view/view_header.php';
         include './view/view_quizz1.php';
+        include './view/view_footer.html';
+        break;
+    case $path === "/PopQuiz/quizzHTML";
+        include "./controler/presentationQuizz.php";
+        include './view/view_header.php';
+        include './view/view_presentationQuizz1.php';
         include './view/view_footer.html';
         break;
     case $path === "/PopQuiz/deconnexion";
