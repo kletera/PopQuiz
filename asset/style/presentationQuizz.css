@@ -1,0 +1,58 @@
+h1{
+    text-align: center;
+}
+.imgHTML{
+    width: 700px;
+    height: 500px;
+}
+
+.container {
+    border: #747474 2px solid;
+    width: 800px !important;
+    height:750px;
+    margin: 40px auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container2{
+    width: 700px;
+}
+.description{
+    margin-top: 30px;
+}
+.info{
+    align-self: flex-start;
+}
+
+.button{
+    align-self: flex-end;
+
+}
+.btnStart {
+    background-color: #F7A60F !important;
+    border: #F7A60F solid 2px !important;
+    color: white !important; 
+  
+}
+
+.btnStart:hover {
+    background-color: white !important;
+    color:#F7A60F !important;
+}
+
+.dot {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: white;
+    border-radius: 50%;
+    border: 1px solid #343A40;
+    display: inline-block;
+}
+.dotFacile {
+    background-color: #8BC04C;
+
+}
