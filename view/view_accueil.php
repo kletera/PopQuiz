@@ -16,30 +16,33 @@
                 <!-- Inscription -->
                 <div class="card-body" id="inscription">
                     <h3 style="margin-bottom: 20px;; color: #343A40; text-align: center;">S'inscrire</h3>
-                    <form>
-                        <input type="text" name="" class="form-control mb-3" placeholder="Nom">
-                        <input type="text" name=""  class="form-control mb-3" placeholder="Prénom">
-                        <input type="email" class="form-control mb-3"  aria-describedby="emailHelp" placeholder="Email">
-                        <input type="password" class="form-control mb-3" placeholder="Mot de passe">
-                        <button type="submit" class="InEnregistrer">Enregistrer</button>
+                    <form method="post">
+                        <input type="text" name="nom" class="form-control mb-3" placeholder="Nom">
+                        <input type="text" name="prenom"  class="form-control mb-3" placeholder="Prénom">
+                        <input type="email" class="form-control mb-3"  aria-describedby="emailHelp" placeholder="Email" name="email">
+                        <input type="password" class="form-control mb-3" placeholder="Mot de passe" name="mdp">
+                        <input type="password" class="form-control mb-3" placeholder="Vérifier le mot de passe" name="verifMdp">
+                        <button type="submit" class="InEnregistrer btn" name="submit">Enregistrer</button>
+                        <h6 class="messageInscription"><?php echo $controler->getMessage() ?></h6>
                     </form>
                 </div>
 
                 <!-- Connexion -->
                 <div class="card-body disNone" id="connexion">
-                    <h3 style="margin-bottom: 20px;; color: #F7A60F; text-align: center;">Se connecter</h3>
-                    <form>
+                    <h3 style="margin-bottom: 20px; color: #F7A60F; text-align: center;">Se connecter</h3>
+                    <form method="post">
                         <div class="mb-3">
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
+                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email" name="emailCo">
                         </div>
                         <div class="mb-3">
-                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Mot de passe">
+                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Mot de passe" name="mdpCo">
                         </div>
-                        <button type="submit" class="CoEnregistrer">Enregistrer</button>
+                        <button type="submit" class="sub CoEnregistrer btn" name="connexion">Connexion</button>
+                        <h6 class="messageConnexion"><?php echo $controler->getMessageCo()?></h6>
                     </form>
                 </div>
             </article>
         </div>
-      </div>
+    </div>
 
 </main>

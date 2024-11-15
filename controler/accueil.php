@@ -1,128 +1,165 @@
-<?php 
-    $link='<link rel="stylesheet" href="./asset/style/accueil.css">';
-    $script='<script src="./asset/script/accueil.js" defer></script>';
+<?php
+$link = '<link rel="stylesheet" href="./asset/style/accueil.css">';
+$script = '<script src="./asset/script/accueil.js" defer></script>';
 
+class ControlerAccueil
+{
+    private ?string $message;
+    private ?string $messageCo;
 
-    // Connexion
-    function dataConnexion(){
-        //1er Etape de sécurité : vérifie si les champs obligatoires sont vides
-        if(empty($_POST["loginCo"]) || empty($_POST["passwordCo"])){
-            return ["loginCo"=>'',"passwordCo"=>'',"erreur"=>'Veuillez remplir le Login ET le Mot de Passe !'];
-        }
-    
-        //2nd Etape de sécurité : nettoyage
-        $loginCo = sanitize($_POST["loginCo"]);
-        $passwordCo = sanitize($_POST["passwordCo"]);
-    
-        //3eme Etape de sécurité : Vérifier que les données sont au bon format
-        if(!filter_var($loginCo,FILTER_VALIDATE_EMAIL)){
-            return ["loginCo"=>'',"passwordCo"=>'',"erreur"=>'Login pas au bon format !'];
-        }
-    
-        return ["loginCo"=>$loginCo,"passwordCo"=>$passwordCo,"erreur"=>''];
+    public function __construct()
+    {
+        $this->message = '';
+        $this->messageCo = '';
     }
-    
-    if(isset($_POST['connexion'])){
-        //je teste les données de connexion envoyés
-        $tab = dataConnexion();
-    
-        //je regarde si je suis dans le cas d'erreur
-        if($tab['erreur'] != ''){
-            //si c'est le cas : j'affiche l'erreur
-            $messageCo = $tab['erreur'];
-        }else{
-            $user= new Users($tab['loginCo']);
-            //Si tout s'est bien passé :
-            //Interroger la BDD pour récupérer les données de l'utilisateurs à partir du login entré
-            $data = $user->readUserByEmail();
-    
-            //Tester si je suis dans le cas d'erreur (problème de communication avec la BDD)
-            //Si c'est le cas, je reçois un string, si tout s'est passé je reçois un array
-            if(gettype($data) == 'string'){
-                $messageCo = $data;
-            }else{
-                //Tout s'est bien passé
-                //Je vérifie la réponse de la BDD : vide ou pas ?
-                //Si c'est vide : alors le login n'existe pas en BDD, et j'affiche un message d'erreur
-                if(empty($data)){
-                    $messageCo = "Erreur de Login et/ou de Mot de Passe !";
-                }else{
-                    //Si on trouve le login en BDD
-                    //Je vérifie la correspondance des mots de passe
-                    if(!password_verify($tab['passwordCo'],$data[0]['mdp_Users'])){
-                        //Si les mots de passe ne correspondent pas, j'affiche un message d'erreur
-                        $messageCo = "Erreur de Login et/ou de Mot de Passe !";
-                    }else{
-                        //Si les mots de passe correspondent, j'enregistre les données de l'utilisateur en SESSION, et j'affiche un message de confimation
-                        $_SESSION['id_Users'] = $data[0]['id_Users'];
-                        $_SESSION['pseudo_Users'] = $data[0]['pseudo_Users'];
-                        $_SESSION['mdp_Users'] = $data[0]['mdp_Users'];
-                        $_SESSION['email_Users'] = $data[0]['email_Users'];
-                        $_SESSION['img_Users'] = $data[0]['img_Users'];
-                        $_SESSION['id_Manga'] = $data[0]['id_Manga'];
-                        $_SESSION['id_User_Type'] = $data[0]['id_User_Type'];
-                        
-                        header('Location:/MangaSky/MonCompte');
-                    }
+
+    //Getter et Setter
+    public function getMessage(): ?string
+    {
+        return $this->message;
+    }
+    public function setMessage(?string $message): self
+    {
+        $this->message = $message;
+        return $this;
+    }
+
+    public function getMessageCo(): ?string
+    {
+        return $this->messageCo;
+    }
+    public function setMessageCo(?string $messageCo): self
+    {
+        $this->messageCo = $messageCo;
+        return $this;
+    }
+
+
+    // Inscription
+    function inscriptionFormInspection()
+    {
+        //1er Etape de sécurité : vérifie si les champs obligatoires sont vides
+        if (empty($_POST["email"]) || empty($_POST["mdp"]) || empty($_POST["verifMdp"])) {
+            return ["email" => '', "mdp" => '', "erreur" => "Veuillez remplir l'email et le mot de passe !"];
+        }
+        if ($_POST["mdp"] !== $_POST["verifMdp"]) {
+            return ["email" => '', "mdp" => '', "erreur" => 'Mots de passe différents'];
+        }
+
+        //2nd Etape de sécurité : nettoyage
+        $email = sanitize($_POST['email']);
+        $mdp = sanitize($_POST['mdp']);
+        $nom = sanitize($_POST['nom']);
+        $prenom = sanitize($_POST['prenom']);
+
+        //3eme Etape de sécurité : Vérifier que les données sont au bon format
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            return ["email" => '', "mdp" => '', "prenom" => '', "nom" => '', "erreur" => "L'email n'est pas au bon format !"];
+        }
+
+        //4eme Etape de sécurité : hasher le mot de passe
+        $mdp = password_hash($mdp, PASSWORD_BCRYPT);
+
+        return ["email" => $email, "mdp" => $mdp, "prenom" => $prenom, "nom" => $nom, "erreur" => ''];
+    }
+
+
+    public function registerUser()
+    {
+        if (isset($_POST['submit'])) {
+            $tab = $this->inscriptionFormInspection();
+            if ($tab['erreur'] != '') {
+                $this->setMessage($tab['erreur']);
+            } else {
+                $newUser = new Utilisateur($tab['email']);
+                $newUser->setEmail($tab['email'])->setMdp($tab['mdp'])->setNom($tab['nom'])->setPrenom($tab['prenom']);
+                if (empty($newUser->readUserByEmail())) {
+                    $this->setMessage($newUser->addUser());
+                } else {
+                    $this->setMessage('Cet email existe déjà.');
                 }
             }
         }
     }
 
-    // Inscription
-    function dataInscription(){
+
+    // Connexion
+    public function connectionFormInspection()
+    {
         //1er Etape de sécurité : vérifie si les champs obligatoires sont vides
-        if(empty($_POST["email"]) || empty($_POST["password"]) || empty($_POST["verifpassword"])){
-            return ["email"=>'',"password"=>'',"verifpassword"=>'',"erreur"=>'Veuillez remplir le Login ET le Mot de Passe !'];
+        if (!isset($_POST["emailCo"]) || empty($_POST["emailCo"])) {
+            return ["emailCo" => "", "mdpCo" => "", "erreur" => "Veuillez entrer un email."];
         }
-        if($_POST["password"] !== $_POST["verifpassword"]){
-            return ["email"=>'',"mdp"=>'',"erreur"=>'Mot de passe différent'];
+        if (!isset($_POST["mdpCo"]) || empty($_POST["mdpCo"])) {
+            return ["emailCo" => "", "mdpCo" => "", "erreur" => "Veuillez entrer un mot de passe."];}
+
+            //2nd Etape de sécurité : nettoyage
+            $emailCo = sanitize($_POST["emailCo"]);
+            $mdpCo = sanitize($_POST["mdpCo"]);
+
+            //3eme Etape de sécurité : Vérifier que les données sont au bon format
+            if (!filter_var($emailCo, FILTER_VALIDATE_EMAIL)) {
+                return ["emailCo" => '', "mdpCo" => '', "erreur" => 'Email pas au bon format !'];
+            }
+
+            return ["emailCo" => $emailCo, "mdpCo" => $mdpCo, "erreur" => ''];
         }
-    
-        //2nd Etape de sécurité : nettoyage
-        $email = sanitize($_POST['email']);
-        $password = sanitize($_POST['password']);
-        $verifpassword = sanitize($_POST["verifpassword"]);
-    
-        //3eme Etape de sécurité : Vérifier que les données sont au bon format
-        if(!filter_var($email,FILTER_VALIDATE_EMAIL)){
-            return ["email"=>'',"password"=>'',"verifpassword"=>'',"erreur"=>'Login pas au bon format !'];
-        }
-    
-        //4eme Etape de sécurité : hasher le mot de passe
-        $mdp = password_hash($verifpassword,PASSWORD_BCRYPT);
-    
-        return ["email"=>$email,"password"=>$password,"verifpassword"=>$mdp,"erreur"=>''];
-    }
-    // Enregistrement de l'utilisateur
-    //Tester si le formulaire d'inscription m'est envoyé
-    if(isset($_POST["inscription"])){
-        //Je lance le test de mes données
-        $tab = dataInscription();
-    
-        //Je vérifie si je suis dans un cas d'erreur
-        if($tab['erreur'] != ''){
-            $mesage=$tab['erreur'];
-        }else{
-            //Création de mon $user à partir de ManagerUser
-            $user= new Users($tab['email']);
-            
-            //J'utilise les Setter pour donner à mon objet le nameUSer, firstNameUser et mdpUser
-            $user->setEmail($tab['email'])->setMdp($tab['verifpassword']);
-    
-    
-            //Je vérifie que le login est diponible
-            if(empty($user->readUserByEmail())){
-                //Si la réponse de la BDD est vide, alors le Login est disponible (car non trouvé en BDD), je peux donc l'utiliser.
-                //Je lance l'ajout de mon utilisateur en BDD
-                $mesage=$user->addUser();
-                header('Location:/MangaSky/connexion');
-                
-    
-            }else{
-                //Si la réponse de la BDD n'est pas vide, alors ce le login est trouvé en BDD, donc le login n'est pas disponible, et je renvoie un message d'erreur
-                $mesage="Ce Login existe déjà en BDD !";
+
+
+    public function logInUser()
+    {
+        if (isset($_POST['connexion'])) {
+            //je teste les données de connexion envoyés
+            $tab = $this->connectionFormInspection();
+
+            //je regarde si je suis dans le cas d'erreur
+            if ($tab['erreur'] != '') {
+                //si c'est le cas : j'affiche l'erreur
+                $this->setMessageCo($tab['erreur']) ;
+            } else {
+                $utilisateur = new Utilisateur($tab['emailCo']);
+                //Si tout s'est bien passé :
+                //Interroger la BDD pour récupérer les données de l'utilisateurs à partir du login entré
+                $data = $utilisateur->readUserByEmail();
+
+                //Tester si je suis dans le cas d'erreur (problème de communication avec la BDD)
+                //Si c'est le cas, je reçois un string, si tout s'est passé je reçois un array
+                if (gettype($data) == 'string') {
+                    $this->setMessageCo($data)  ;
+                } else {
+                    //Tout s'est bien passé
+                    //Je vérifie la réponse de la BDD : vide ou pas ?
+                    //Si c'est vide : alors le login n'existe pas en BDD, et j'affiche un message d'erreur
+                    if (empty($data)) {
+                        $this->setMessageCo("Erreur dans l'email et/ou dans le mot de passe !");
+                    } else {
+                        //Si on trouve le login en BDD
+                        //Je vérifie la correspondance des mots de passe
+                        if (!password_verify($tab['mdpCo'], $data[0]['mdp'])) {
+                            var_dump(password_verify($tab['mdpCo'], $data[0]['mdp']));
+                            print_r($data[0]['mdp']);
+                            print_r($tab['mdpCo']);
+                            //Si les mots de passe ne correspondent pas, j'affiche un message d'erre(ur
+                            $this->setMessageCo("Erreur dans l'email et/ou dans le mot de passe !");
+                        } else {
+                            //Si les mots de passe correspondent, j'enregistre les données de l'utilisateur en SESSION, et j'affiche un message de confimation
+                            $_SESSION['mdp'] = $data[0]['mdp'];
+                            $_SESSION['email'] = $data[0]['email'];
+                            $_SESSION['id_utilisateur'] = $data[0]['id_utilisateur'];
+                            $_SESSION['nom'] = $data[0]['nom'];
+                            $_SESSION['prenom'] = $data[0]['prenom'];
+
+                            $this->setMessageCo("{$_SESSION['email']} connecté avec succès!");
+                        }
+                    }
+                }
             }
         }
     }
-?>
+}
+
+$controler = new ControlerAccueil();
+$controler->registerUser();
+$controler->logInUser();
+
+
