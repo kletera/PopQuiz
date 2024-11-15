@@ -1,4 +1,6 @@
 <link rel="stylesheet" href="./asset/style/compte.css">
+<link rel="stylesheet" href="./asset/style/listeQuizz.css">
+<script src="./asset/script/listQuiz.js" defer></script>
 <script src="./asset/script/api.js" defer></script>
 <main>
     <div class="container">
@@ -26,62 +28,41 @@
         </form>
         <button type="button" class="btn btnNormal mt-2">Enregistrer</button>
 
-
-        <h2 class="mt-4 monCompteTitles">Quizz créer</h2>
-        <div class="row paddingLeftRight ">
-            <div class="col-5 tabWordingLeft">
-                <h5 class="m-0">Titre</h5>
-            </div>
-
-            <div class="col tabWording">
-                <h5 class="m-0">Date</h5>
-            </div>
-
-            <div class="col tabWording">
-                <h5 class="m-0">Participation</h5>
-            </div>
+        <div style="display: flex; align-items: center;">
+            <h2 class="mt-4 monCompteTitles">Quizz créer</h2>
+            <p class="mb-0 tabWording" style="font-weight: bold; margin-left: 12%">Créer un nouveau quizz +</p>
         </div>
-
-        <div class="row paddingLeftRight">
-            <div class="col-5 quizInfos">
-                <h6 class="m-0">HTML et CSS, les bases</h6>
-            </div>
-
-            <div class="col quizInfos">
-                <h6 class="m-0">13/11/2024</h6>
-            </div>
-
-            <div class="col quizInfos">
-                <h6 class="m-0">53%</h6>
-            </div>
-
-            <div class="col quizInfos">
-                <h6 class="m-0">En cours</h6>
-            </div>
-        </div>
-        <h2 class="mt-4 monCompteTitles">Liste des élèves</h2>
         <table>
             <thead>
                 <tr>
-                    <th class="col-5 tabWordingLeft">Titre</th>
-                    <th class="col-2 tabWording">Date</th>
-                    <th class="col-3 tabWording">Participation</th>
-                    <th class="col-2 tabWordingRight">Difficulter</th>
+                    <th class="col-2 tabWordingLeft">Titre</th>
+                    <th class="col-1 tabWording">Catégorie</th>
+                    <th class="col-1 tabWording">Durée</th>
+                    <th class="col-1 tabWordingRight">Difficulter</th>
+                    <th class="col-1"></th>
                 </tr>
             </thead>
-            <tbody class="CréaQuiz">
+            <tbody class="creaQuiz">
                 
             </tbody>
         </table>
 
-        <h2 class="mt-4 monCompteTitles">Liste des élèves</h2>
-        <table>
+        <div style="display: flex; align-items: center;">
+            <h2 class="mt-4 monCompteTitles">Liste des élèves</h2>
+            <p class="dropdown-toggle mb-0 tabWording" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false" style="font-weight: bold; margin-left: 20%">DEV31 ERN 24-01</p>
+            <ul class="dropdown-menu">
+                <li><p class="dropdown-item" href="#">DEV31 ERN 23-01</p></li>
+                <li><p class="dropdown-item" href="#">DEV31 ERN 24-03</p></li>
+            </ul>
+        </div>
+        <table style="margin-bottom: 35px;">
             <thead>
                 <tr>
-                    <th class="col-5 tabWordingLeft">Nom</th>
-                    <th class="col-2 tabWording">Prénom</th>
-                    <th class="col-3 tabWording">Email</th>
-                    <th class="col-2 tabWordingRight">Moyenne</th>
+                    <th class="col-2 tabWordingLeft">Nom</th>
+                    <th class="col-1 tabWording">Prénom</th>
+                    <th class="col-1 tabWording">Email</th>
+                    <th class="col-1 tabWordingRight">Moyenne</th>
+                    <th class="col-1"></th>
                 </tr>
             </thead>
             <tbody class="stat">
