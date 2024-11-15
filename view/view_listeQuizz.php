@@ -8,16 +8,16 @@
 
             <form class="container-fluid mb-2 p-0">
                 <div class="input-group">
-                    
+
                     <span class="input-group-text" id="basic-addon1">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                        class="bi bi-search loupeDeco" viewBox="0 0 16 16">
-                        <path
-                            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
-                    </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                            class="bi bi-search loupeDeco" viewBox="0 0 16 16">
+                            <path
+                                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                        </svg>
                     </span>
-                    <input type="text" id="searchInput" class="form-control" placeholder="Rechercher un quiz ..." aria-label="Recherche"
-                        aria-describedby="basic-addon1">
+                    <input type="text" id="searchInput" class="form-control" placeholder="Rechercher un quiz ..."
+                        aria-label="Recherche" aria-describedby="basic-addon1">
                 </div>
             </form>
 
@@ -39,12 +39,13 @@
                         <span class="dot dotMoyenne mt-2"> </span>
                         <label for="moyenne ">Moyenne</label>
                         <br>
-                        <input type="checkbox" id="difficile" name="difficile" />
-                        <span class="dot dotDifficile mt-2"> </span>
+                        <input type="checkbox" id="difficile" name="difficile">
+                        <span class="dot dotDifficile mt-2"></span>
                         <label for="difficile">Difficile</label>
                     </div>
                 </div>
             </div>
+
             <div class="accordion-item">
                 <h2 class="accordion-header">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -55,15 +56,15 @@
                 </h2>
                 <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse">
                     <div class="accordion-body">
-                        <input type="checkbox" id="Grammar" name="Grammar" />
+                        <input type="checkbox" id="15" />
                         <label for="<15">
-                            < 15 min</label>
-                                <br>
-                                <input type="checkbox" id="15-30" name="20minutes" />
-                                <label for="20minutes">15min - 30min</label>
-                                <br>
-                                <input type="checkbox" id="<30" name="45minutes" />
-                                <label for="45minutes">> 30min</label>
+                            < 15 min</label><br>
+
+                                <input type="checkbox" id="15-30" />
+                                <label for="15-30">15min - 30min</label><br>
+
+                                <input type="checkbox" id="30" />
+                                <label for=">30">> 30min</label>
                     </div>
                 </div>
             </div>
@@ -76,11 +77,44 @@
                         Catégories
                     </button>
                 </h2>
+                <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse">
+                    <div class="categoriesCheckbox accordion-body">
+                        <input type="checkbox" id="anglais" />
+                        <label for="anglais">Anglais</label><br>
+
+                        <input type="checkbox" id="backEnd" />
+                        <label for="backEnd">Back-End</label><br>
+
+                        <input type="checkbox" id="conception" />
+                        <label for="conception">Conception</label><br>
+
+                        <input type="checkbox" id="frontEnd" />
+                        <label for="frontEnd">Front-End</label><br>
+
+                        <input type="checkbox" id="gestionDeProjet" />
+                        <label for="gestionDeProjet">Gestion de Projet</label><br>
+
+                        <input type="checkbox" id="github" />
+                        <label for="github">Github</label><br>
+
+                        <input type="checkbox" id="systemeEtReseaux" />
+                        <label for="systemeEtReseaux">Système et Réseaux</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="true"
+                        aria-controls="panelsStayOpen-collapseThree">
+                        Catégories
+                    </button>
+                </h2>
 
                 <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse">
-                    <div class="accordion-body">
+                    <div class="accordion-body catégoriesCheckbox">
 
-                        <!-- Anglais -->
                         <div class="accordion-item">
                             <h2 class="accordion-header">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -90,8 +124,7 @@
                                     Anglais
                                 </button>
                             </h2>
-                            <div id="collapseFour" class="accordion-collapse collapse"
-                                data-bs-parent="#accordionExample">
+                            <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
                                     <input type="checkbox" id="Grammar" name="Grammar" />
                                     <label for="Grammar">
@@ -112,180 +145,164 @@
                                     <input type="checkbox" id="20minutes" name="20minutes" />
                                     <label for="20minutes">Grammaire</label>
                                 </div>
-                            </div>
                         </div>
-
-                        <!-- Back-End -->
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseFive" aria-expanded="false"
-                                    aria-controls="collapseFive"><input type="checkbox" id="45minutes" name="45minutes"
-                                        class="me-2" />
-                                    Back-End
-                                </button>
-                            </h2>
-                            <div id="collapseFive" class="accordion-collapse collapse"
-                                data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    <input type="checkbox" id="Grammar" name="Grammar" />
-                                    <label for="Grammar">
-                                        SQL</label>
-                                    <br>
-                                    <input type="checkbox" id="20minutes" name="20minutes" />
-                                    <label for="20minutes">PHP</label>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <!-- Conception-->
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseSix" aria-expanded="false"
-                                    aria-controls="collapseSix"><input type="checkbox" id="45minutes" name="45minutes"
-                                        class="me-2" />
-                                    Conception
-                                </button>
-                            </h2>
-                            <div id="collapseSix" class="accordion-collapse collapse"
-                                data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    <input type="checkbox" id="Grammar" name="Grammar" />
-                                    <label for="Grammar">
-                                        UML</label>
-                                    <br>
-                                    <input type="checkbox" id="20minutes" name="20minutes" />
-                                    <label for="20minutes">SEO</label>
-                                    <br>
-                                    <input type="checkbox" id="20minutes" name="20minutes" />
-                                    <label for="20minutes">Maquettage</label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Front-End -->
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseSeven" aria-expanded="false"
-                                    aria-controls="collapseSeven"><input type="checkbox" id="45minutes" name="45minutes"
-                                        class="me-2" />
-                                    Front-End
-                                </button>
-                            </h2>
-                            <div id="collapseSeven" class="accordion-collapse collapse"
-                                data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    <input type="checkbox" id="Grammar" name="Grammar" />
-                                    <label for="Grammar">
-                                        HTML</label>
-                                    <br>
-                                    <input type="checkbox" id="20minutes" name="20minutes" />
-                                    <label for="20minutes">CSS</label>
-                                    <br>
-                                    <input type="checkbox" id="20minutes" name="20minutes" />
-                                    <label for="20minutes">JavaScript</label>
-                                    <br>
-                                    <input type="checkbox" id="20minutes" name="20minutes" />
-                                    <label for="20minutes">Bootstrap</label>
-                                    <br>
-                                    <input type="checkbox" id="20minutes" name="20minutes" />
-                                    <label for="20minutes">React</label>
-                                    <br>
-                                    <input type="checkbox" id="20minutes" name="20minutes" />
-                                    <label for="20minutes">Angular</label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Gestion de projet -->
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseEight" aria-expanded="false"
-                                    aria-controls="collapseEight"><input type="checkbox" id="45minutes" name="45minutes"
-                                        class="me-2" />
-                                    Gestion de projet
-                                </button>
-                            </h2>
-                            <div id="collapseEight" class="accordion-collapse collapse"
-                                data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    <input type="checkbox" id="Grammar" name="Grammar" />
-                                    <label for="Grammar">
-                                        Cahier des charges</label>
-                                    <br>
-                                    <input type="checkbox" id="20minutes" name="20minutes" />
-                                    <label for="20minutes">Scrub</label>
-                                    <br>
-                                    <input type="checkbox" id="20minutes" name="20minutes" />
-                                    <label for="20minutes">Agile</label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Git -->
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseNine" aria-expanded="false"
-                                    aria-controls="collapseNine"><input type="checkbox" id="45minutes" name="45minutes"
-                                        class="me-2" />
-                                    Github
-                                </button>
-                            </h2>
-                            <div id="collapseNine" class="accordion-collapse collapse"
-                                data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    <input type="checkbox" id="Grammar" name="Grammar" />
-                                    <label for="Grammar">
-                                        Commandes</label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Système et réseaux -->
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseTen" aria-expanded="false"
-                                    aria-controls="collapseTen"><input type="checkbox" id="45minutes" name="45minutes"
-                                        class="me-2" />
-                                    Système et réseaux
-                                </button>
-                            </h2>
-                            <div id="collapseTen" class="accordion-collapse collapse"
-                                data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    <input type="checkbox" id="Grammar" name="Grammar" />
-                                    <label for="Grammar">
-                                        Hardware</label>
-                                    <br>
-                                    <input type="checkbox" id="Grammar" name="Grammar" />
-                                    <label for="Grammar">
-                                        Algoritme</label>
-                                    <br>
-                                    <input type="checkbox" id="Grammar" name="Grammar" />
-                                    <label for="Grammar">
-                                        Linux</label>
-                                    <br>
-                                    <input type="checkbox" id="Grammar" name="Grammar" />
-                                    <label for="Grammar">
-                                        Réseau</label>
-                                    <br>
-                                    <input type="checkbox" id="Grammar" name="Grammar" />
-                                    <label for="Grammar">
-                                        Virtualisation</label>
-
-                                </div>
-                            </div>
-                        </div>
-
                     </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive"><input
+                                    type="checkbox" id="45minutes" name="45minutes" class="me-2" />
+                                Back-End
+                            </button>
+                        </h2>
+                        <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <input type="checkbox" id="Grammar" name="Grammar" />
+                                <label for="Grammar">
+                                    SQL</label>
+                                <br>
+                                <input type="checkbox" id="20minutes" name="20minutes" />
+                                <label for="20minutes">PHP</label>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix"><input
+                                    type="checkbox" id="45minutes" name="45minutes" class="me-2" />
+                                Conception
+                            </button>
+                        </h2>
+                        <div id="collapseSix" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <input type="checkbox" id="Grammar" name="Grammar" />
+                                <label for="Grammar">
+                                    UML</label>
+                                <br>
+                                <input type="checkbox" id="20minutes" name="20minutes" />
+                                <label for="20minutes">SEO</label>
+                                <br>
+                                <input type="checkbox" id="20minutes" name="20minutes" />
+                                <label for="20minutes">Maquettage</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseSeven" aria-expanded="false"
+                                aria-controls="collapseSeven"><input type="checkbox" id="45minutes" name="45minutes"
+                                    class="me-2" />
+                                Front-End
+                            </button>
+                        </h2>
+                        <div id="collapseSeven" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <input type="checkbox" id="Grammar" name="Grammar" />
+                                <label for="Grammar">
+                                    HTML</label>
+                                <br>
+                                <input type="checkbox" id="20minutes" name="20minutes" />
+                                <label for="20minutes">CSS</label>
+                                <br>
+                                <input type="checkbox" id="20minutes" name="20minutes" />
+                                <label for="20minutes">JavaScript</label>
+                                <br>
+                                <input type="checkbox" id="20minutes" name="20minutes" />
+                                <label for="20minutes">Bootstrap</label>
+                                <br>
+                                <input type="checkbox" id="20minutes" name="20minutes" />
+                                <label for="20minutes">React</label>
+                                <br>
+                                <input type="checkbox" id="20minutes" name="20minutes" />
+                                <label for="20minutes">Angular</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseEight" aria-expanded="false"
+                                aria-controls="collapseEight"><input type="checkbox" id="45minutes" name="45minutes"
+                                    class="me-2" />
+                                Gestion de projet
+                            </button>
+                        </h2>
+                        <div id="collapseEight" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <input type="checkbox" id="Grammar" name="Grammar" />
+                                <label for="Grammar">
+                                    Cahier des charges</label>
+                                <br>
+                                <input type="checkbox" id="20minutes" name="20minutes" />
+                                <label for="20minutes">Scrub</label>
+                                <br>
+                                <input type="checkbox" id="20minutes" name="20minutes" />
+                                <label for="20minutes">Agile</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine"><input
+                                    type="checkbox" id="45minutes" name="45minutes" class="me-2" />
+                                Github
+                            </button>
+                        </h2>
+                        <div id="collapseNine" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <input type="checkbox" id="Grammar" name="Grammar" />
+                                <label for="Grammar">
+                                    Commandes</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseTen" aria-expanded="false" aria-controls="collapseTen"><input
+                                    type="checkbox" id="45minutes" name="45minutes" class="me-2" />
+                                Système et réseaux
+                            </button>
+                        </h2>
+                        <div id="collapseTen" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <input type="checkbox" id="Grammar" name="Grammar" />
+                                <label for="Grammar">
+                                    Hardware</label>
+                                <br>
+                                <input type="checkbox" id="Grammar" name="Grammar" />
+                                <label for="Grammar">
+                                    Algoritme</label>
+                                <br>
+                                <input type="checkbox" id="Grammar" name="Grammar" />
+                                <label for="Grammar">
+                                    Linux</label>
+                                <br>
+                                <input type="checkbox" id="Grammar" name="Grammar" />
+                                <label for="Grammar">
+                                    Réseau</label>
+                                <br>
+                                <input type="checkbox" id="Grammar" name="Grammar" />
+                                <label for="Grammar">
+                                    Virtualisation</label>
+
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
+        </div>-->
 
         </div>
     </aside>

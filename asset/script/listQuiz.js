@@ -7,7 +7,7 @@ const QUIZ = [
       "Êtes-vous prêt à mettre votre grammaire anglaise à l'épreuve ? Ce quiz vous permet de réviser les règles essentielles et d'affiner votre maîtrise des structures grammaticales.",
     durée: 20,
     difficulté: 3,
-    catégorie: ["Anglais", "Grammaire"],
+    catégorie: "Anglais",
   },
   {
     id: 2,
@@ -17,7 +17,7 @@ const QUIZ = [
       "Êtes-vous prêt à mettre votre grammaire anglaise à l'épreuve ? Ce quiz vous permet de réviser les règles essentielles et d'affiner votre maîtrise des structures grammaticales. Testez vos connaissances, corrigez vos erreurs et relevez le défi !",
     durée: 30,
     difficulté: 5,
-    catégorie: ["Anglais", "Vocabulaire"],
+    catégorie: "Anglais",
   },
   {
     id: 3,
@@ -27,7 +27,7 @@ const QUIZ = [
       "Ce quiz couvre les éléments essentiels du langage HTML : balises, structure de page, et bonnes pratiques. Parfait pour les débutants ou pour réviser vos fondamentaux !",
     durée: 45,
     difficulté: 2,
-    catégorie: ["Front-End", "HTML"],
+    catégorie: "Front-End",
   },
   {
     id: 4,
@@ -37,7 +37,7 @@ const QUIZ = [
       "Testez vos connaissances de base en CSS ! Ce quiz explore les concepts essentiels : sélection de styles, propriétés de mise en forme, couleurs, et plus encore. Idéal pour débutants et pour réviser les bases du design web !",
     durée: 10,
     difficulté: 1,
-    catégorie: ["HTML", "CSS"],
+    catégorie: "Back-End",
   },
   {
     id: 5,
@@ -47,7 +47,7 @@ const QUIZ = [
       "Ce quiz couvre les bases : création, manipulation, méthodes essentielles (push, pop, map, etc.), et bonnes pratiques pour travailler efficacement avec les tableaux. Parfait pour consolider vos compétences en JS !",
     durée: 60,
     difficulté: 4,
-    catégorie: ["HTML", "JavaScript"],
+    catégorie: "Conception",
   },
 ];
 
@@ -64,12 +64,9 @@ function generateDifficulty(difficulty) {
 
   return [...Array(5)]
     .map((_, index) => {
-      // On colore les points en fonction de la difficulté :
-      // Les premiers "difficulty" points auront la classe de couleur, les autres seront blancs.
       const classToApply = index < difficulty ? difficultyClass : "";
       return `<span class="dot ${classToApply}"></span>`;
-    })
-    .join("");
+    }).join("");
 }
 
 function CreateQuiz(quizData) {
@@ -92,9 +89,7 @@ function CreateQuiz(quizData) {
                       quizData.description
                     }</p>
                     <p class="card-text">
-                    <small class="text-body-secondary quizCategory"><em>${quizData.catégorie.join(
-                      " - "
-                    )}</em></small></p>
+                    <small class="text-body-secondary quizCategory"><em>${quizData.catégorie}</em></small></p>
                 </div>
             </div>
                 <div class="col-3 info ">
@@ -116,76 +111,214 @@ function CreateQuiz(quizData) {
             </div>`;
   quizContainer.appendChild(quizCard);
 }
-QUIZ.forEach((quiz) => CreateQuiz(quiz));
 
-function searchQuiz() {
-  const searchQuery = document
-    .getElementById("searchInput")
-    .value.toLowerCase();
+// function searchQuiz() {
+//   const searchQuery = document
+//     .getElementById("searchInput")
+//     .value.toLowerCase();
+//   const quizCards = document.querySelectorAll(".cardQuiz");
+
+//   quizCards.forEach((quizCard) => {
+//     const title = quizCard
+//       .querySelector(".quizTitle")
+//       .textContent.toLowerCase();
+//     const description = quizCard
+//       .querySelector(".quizDescription")
+//       .textContent.toLowerCase();
+//     const categories = quizCard
+//       .querySelector(".quizCategory")
+//       .textContent.toLowerCase();
+
+//     if (
+//       title.includes(searchQuery) ||
+//       description.includes(searchQuery) ||
+//       categories.includes(searchQuery)
+//     ) {
+//       quizCard.style.display = "block";
+//     } else {
+//       quizCard.style.display = "none";
+//     }
+//   });
+// }
+
+// document.getElementById("searchInput").addEventListener("input", searchQuiz);
+
+// function filterQuiz(){
+//     const searchQuery = document.getElementById("searchInput").value.toLowerCase();
+
+//     const selectedDifficulties = getSelectedDifficulties();
+//     const selectedCategories = getSelectedCategories();
+//     const selectedDurations = getSelectedDurations();
+
+//     const quizCards = document.querySelectorAll(".cardQuiz");
+
+//     quizCards.forEach(quizCard => {
+//         const title = quizCard.querySelector(".quizTitle").textContent.toLowerCase();
+//         const description = quizCard.querySelector(".quizDescription").textContent.toLowerCase();
+//         const categories = quizCard.querySelector(".quizCategory").textContent.toLowerCase().split(" - ");
+
+//         const difficultyClass = quizCard.querySelector(".dot")?.classList;
+//         const difficulty =
+//           difficultyClass?.contains("dotDifficile")
+//             ? "difficile"
+//             : difficultyClass?.contains("dotMoyenne")
+//             ? "moyenne"
+//             : "facile";
+
+//         const durationText = quizCard.querySelector(".quizDuration").textContent;
+//         const duration = parseInt(durationText.replace(/\D/g, ''));
+
+
+
+//         const matchesSearch = title.includes(searchQuery) || description.includes(searchQuery) || categories.includes(searchQuery);
+//         const matchesDifficulty = selectedDifficulties.length === 0 || selectedDifficulties.includes(difficulty);
+//         const matchesDuration = selectedDurations.some(durationRange => {
+//             if (durationRange === '<15') return duration < 15;
+//             if (durationRange === '15-30') return duration >= 15 && duration <= 30;
+//             if (durationRange === '>30') return duration > 30;
+//             return false;
+//         });
+
+//         const matchesCategory = selectedCategories.length === 0 || selectedCategories.some(category => categories.includes(category));
+
+//         if (matchesSearch && matchesDifficulty && matchesDuration && matchesCategory) {
+//             quizCard.style.display = "block"; // Afficher le quiz
+//         } else {
+//             quizCard.style.display = "none"; // Cacher le quiz
+//         }
+//     });
+// }
+
+// function applyFilters() {
+//   const searchQuery = document.getElementById("searchInput").value.toLowerCase();
+//   const selectedDifficulties = getSelectedDifficulties();
+//   const selectedCategories = getSelectedCategories();
+//   const selectedDurations = getSelectedDurations();
+
+//   const quizCards = document.querySelectorAll(".cardQuiz");
+
+//   quizCards.forEach((quizCard) => {
+//     const title = quizCard.querySelector(".quizTitle").textContent.toLowerCase();
+//     const description = quizCard.querySelector(".quizDescription").textContent.toLowerCase();
+//     const categories = quizCard.querySelector(".quizCategory").textContent.toLowerCase();
+//     const difficultyClass = quizCard.querySelectorAll(".dot")?.classList;
+//     const difficulty =
+//       difficultyClass?.contains("dotDifficile")
+//         ? "difficile"
+//         : difficultyClass?.contains("dotMoyenne")
+//         ? "moyenne"
+//         : "facile";
+//     const durationText = quizCard.querySelector(".quizDuration").textContent;
+//     const duration = parseInt(durationText.replace(/\D/g, ""));
+
+//     const matchesSearch = title.includes(searchQuery) || description.includes(searchQuery) || categories.some((category) => category.includes(searchQuery));
+//     const matchesDifficulty = selectedDifficulties.length === 0 || selectedDifficulties.includes(difficulty);
+//     const matchesDuration = selectedDurations.some((durationRange) => {
+//       if (durationRange === "<15") return duration < 15;
+//       if (durationRange === "15-30") return duration >= 15 && duration <= 30;
+//       if (durationRange === ">30") return duration > 30;
+//       return false;
+//     });
+//     const matchesCategory = selectedCategories.length === 0 || selectedCategories.some((category) => categories.includes(category));
+
+//     if (matchesSearch && matchesDifficulty && matchesDuration && matchesCategory) {
+//       quizCard.style.display = "block";
+//     } else {
+//       quizCard.style.display = "none";
+//     }
+//   });
+// }
+
+
+function applyFilters() {
+  const searchQuery = document.getElementById("searchInput").value.toLowerCase();
+  const selectedDifficulties = getSelectedDifficulties();
+  const selectedCategories = getSelectedCategories();
+  const selectedDurations = getSelectedDurations();
+
   const quizCards = document.querySelectorAll(".cardQuiz");
 
   quizCards.forEach((quizCard) => {
-    const title = quizCard
-      .querySelector(".quizTitle")
-      .textContent.toLowerCase();
-    const description = quizCard
-      .querySelector(".quizDescription")
-      .textContent.toLowerCase();
-    const categories = quizCard
-      .querySelector(".quizCategory")
-      .textContent.toLowerCase();
+    const title = quizCard.querySelector(".quizTitle").textContent.toLowerCase();
+    const description = quizCard.querySelector(".quizDescription").textContent.toLowerCase();
+    
+    // Récupérer la catégorie du quiz et la rendre insensible à la casse
+    const categories = quizCard.querySelector(".quizCategory").textContent.toLowerCase().trim();
+    
+    // Vérification de la difficulté
+    const difficultyDots = quizCard.querySelectorAll(".dot");
+    let difficultyClass = "";
+    // Vérifier quelles classes sont présentes sur les dots pour déterminer la difficulté
+    const hasDotFacile = [...difficultyDots].some(dot => dot.classList.contains("dotFacile"));
+    const hasDotMoyenne = [...difficultyDots].some(dot => dot.classList.contains("dotMoyenne"));
+    const hasDotDifficile = [...difficultyDots].some(dot => dot.classList.contains("dotDifficile"));
 
-    if (
-      title.includes(searchQuery) ||
-      description.includes(searchQuery) ||
-      categories.includes(searchQuery)
-    ) {
+    if (hasDotFacile) {
+      difficultyClass = "facile";  // Si dotFacile est présent
+    } else if (hasDotMoyenne) {
+      difficultyClass = "moyenne"; // Si dotMoyenne est présent
+    } else if (hasDotDifficile) {
+      difficultyClass = "difficile"; // Si dotDifficile est présent
+    }
+    
+    const durationText = quizCard.querySelector(".quizDuration").textContent;
+    const duration = parseInt(durationText.replace(/\D/g, ""));
+
+    // Comparer avec la requête de recherche
+    const matchesSearch = searchQuery !== "" && (title.includes(searchQuery) || description.includes(searchQuery) || categories.includes(searchQuery));
+    
+    // Comparer les difficultés
+    const matchesDifficulty = selectedDifficulties.length === 0 || selectedDifficulties.includes(difficultyClass);
+    
+    // Comparer la durée
+    const matchesDuration = selectedDurations.some((durationRange) => {
+      if (durationRange === "<15") return duration < 15;
+      if (durationRange === "15-30") return duration >= 15 && duration <= 30;
+      if (durationRange === ">30") return duration > 30;
+      return false;
+    });
+
+    // Comparer les catégories
+    const matchesCategory = selectedCategories.length === 0 || selectedCategories.some((category) => categories.includes(category));
+
+    // // Si toutes les conditions de filtrage sont remplies, afficher le quiz
+    // if (matchesDuration || matchesCategory) {
+    //   quizCard.style.display = "block";
+    // } else {
+    //   quizCard.style.display = "none";
+    // }
+
+    //     if (matchesDuration || matchesCategory) {
+    //   quizCard.style.display = "block";
+    // } else {
+    //   quizCard.style.display = "none";
+    // }
+    console.log({
+      title,
+      description,
+      categories,
+      selectedCategories,
+      matchesSearch,
+      matchesDifficulty,
+      matchesDuration,
+      matchesCategory,
+      difficultyClass,
+      duration,
+      durationText,
+      selectedDifficulties,
+      selectedDurations,
+      searchQuery,
+    });
+
+    // Appliquer la logique combinée
+    if ((matchesSearch || searchQuery === "") && matchesDifficulty && matchesDuration && matchesCategory) {
+      console.log(`Afficher le quiz: ${title}`);
       quizCard.style.display = "block";
     } else {
+      console.log(`Cacher le quiz: ${title}`);
       quizCard.style.display = "none";
     }
   });
-}
-
-document.getElementById("searchInput").addEventListener("input", searchQuiz);
-
-function filterQuiz(){
-    const searchQuery = document.getElementById("searchInput").value.toLowerCase;
-
-    const selectedDifficulties = getSelectedDifficulties();
-    const selectedCategories = getSelectedCategories();
-    const selectedDurations = getSelectedDurations();
-
-    const quizCards = document.querySelectorAll(".cardQuiz");
-
-    quizCards.forEach(quizCard => {
-        const title = quizCard.querySelector(".quizTitle").textContent.toLowerCase();
-        const description = quizCard.querySelector(".quizDescription").textContent.toLowerCase();
-        const categories = quizCard.querySelector(".quizCategory").textContent.toLowerCase().split(" - ");
-
-        const difficulty = quizCard.querySelector(".dot").classList.contains("dotDifficile") ? 'difficile' : quizCard.querySelector(".dot").classList.contains("dotMoyenne") ? 'moyenne' : 'facile';
-
-        const durationText = quizCard.querySelector(".quizDuration").textContent;
-        const duration = parseInt(durationText.replace(/\D/g, ''));
-
-
-        const matchesSearch = title.includes(searchQuery) || description.includes(searchQuery) || categories.includes(searchQuery);
-        const matchesDifficulty = selectedDifficulties.lenght === 0 || selectedDifficulties.includes(difficulty);
-        const matchesDuration = selecterDurations.some(durationRange => {
-            if (durationRange === '<15') return duration < 15;
-            if (durationRange === '15-30') return duration >= 15 && duration <= 30;
-            if (durationRange === '>30') return duration > 30;
-            return false;
-        });
-
-        const matchesCategory = selectedCategories.length === 0 || selectedCategories.some(category => categories.includes(category));
-
-        if (matchesSearch && matchesDifficulty && matchesDuration && matchesCategory) {
-            quizCard.style.display = "block"; // Afficher le quiz
-        } else {
-            quizCard.style.display = "none"; // Cacher le quiz
-        }
-    });
 }
 
 function getSelectedDifficulties(){
@@ -193,30 +326,32 @@ function getSelectedDifficulties(){
     if (document.getElementById("facile").checked) difficulties.push('facile');
     if (document.getElementById("moyenne").checked) difficulties.push('moyenne');
     if (document.getElementById("difficile").checked) difficulties.push('difficile');
+    console.log(difficulties);
     return difficulties;
 }
 
 function getSelectedDurations() {
     const durations = [];
-    if (document.getElementById("<15").checked) durations.push('<15');
+    if (document.getElementById("15").checked) durations.push('<15');
     if (document.getElementById("15-30").checked) durations.push('15-30');
-    if (document.getElementById(">30").checked) durations.push('>30');
+    if (document.getElementById("30").checked) durations.push('>30');
+    console.log(durations);
     return durations;
 }
 
 function getSelectedCategories() {
     const categories = [];
-    // Récupérer toutes les catégories checkbox, ici c'est un exemple pour "Anglais" mais tu peux les adapter
-    const categoryCheckboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+    const categoryCheckboxes = document.querySelectorAll('.categoriesCheckbox input[type="checkbox"]:checked');
     categoryCheckboxes.forEach(checkbox => {
-        categories.push(checkbox.parentElement.textContent.trim().toLowerCase()); // Ajoute la catégorie
+        categories.push(checkbox.nextElementSibling.textContent.trim().toLowerCase());
     });
+    console.log(categories);
     return categories;
 }
 
-document.getElementById("searchInput").addEventListener('input', filterQuizzes);
-
-// Attacher les événements de modification des filtres
+document.getElementById("searchInput").addEventListener('input', applyFilters);
 document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
-    checkbox.addEventListener('change', filterQuizzes);
+    checkbox.addEventListener('change', applyFilters);
 });
+
+QUIZ.forEach((quiz) => CreateQuiz(quiz));
