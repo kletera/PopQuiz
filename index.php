@@ -1,6 +1,6 @@
 <?php
 //CONTROLER DE LA PAGE D'ACCUEIL
-
+session_start();
 //Analyse de l'URL avec parse_url() et retourne ses composants
 $url = parse_url($_SERVER['REQUEST_URI']);
 
@@ -13,6 +13,9 @@ $path = isset($url['path']) ? $url['path'] : '/';
 switch ($path) {
 
     case $path === "/PopQuiz/":
+        include './utils/env.php';
+        include './model/model_utilisateur.php';
+        include './utils/functions.php';
         include './controler/accueil.php';
         include './view/view_header.php';
         include './view/view_accueil.php';
