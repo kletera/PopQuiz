@@ -145,7 +145,7 @@ class Utilisateur
         //Try...Catch
         try {
             //2nd Etape : préparer ma requête SELECT
-            $req = $bdd->prepare('SELECT id_utilisateur, email, mdp FROM utilisateur WHERE email = ?');
+            $req = $bdd->prepare('SELECT id_utilisateur, email, mdp, prenom, nom FROM utilisateur WHERE email = ?');
 
             //3Eme Etape : introduire le login de l'utilisateur dans ma requête avec du Binding de Paramètre
             $req->bindParam(1, $email, PDO::PARAM_STR);

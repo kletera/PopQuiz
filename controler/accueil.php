@@ -58,7 +58,7 @@ class ControlerAccueil
         }
 
         //4eme Etape de sécurité : hasher le mot de passe
-        $mdp = password_hash($mdp, PASSWORD_BCRYPT);
+        $mdp = password_hash($mdp, PASSWORD_DEFAULT);
 
         return ["email" => $email, "mdp" => $mdp, "prenom" => $prenom, "nom" => $nom, "erreur" => ''];
     }
@@ -102,7 +102,7 @@ class ControlerAccueil
                 return ["emailCo" => '', "mdpCo" => '', "erreur" => 'Email pas au bon format !'];
             }
 
-            return ["emailCo" => $emailCo, "mdpCo" => $mdpCo, "erreur" => ''];
+            return ["emailCo" => $emailCo, 'mdpCo' => $mdpCo, "erreur" => ''];
         }
 
 
@@ -150,6 +150,7 @@ class ControlerAccueil
                             $_SESSION['prenom'] = $data[0]['prenom'];
 
                             $this->setMessageCo("{$_SESSION['email']} connecté avec succès!");
+
                         }
                     }
                 }
