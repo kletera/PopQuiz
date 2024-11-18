@@ -17,7 +17,7 @@
             <h1>NUMERIQUIZZ</h1>
             <ul style="margin: 0; align-items: center;">
                 <a href="/PopQuiz/listequiz" class="imgNav quizz <?php echo $header->getClassNav() ?>"></a>
-                <a href="<?php echo $header->compteLink() ?>" class="imgNav compte <?php echo $header->getClassNav() ?>"></a>
+                <a href="<?php echo $header->getLinkCompte() ?>" class="imgNav compte <?php echo $header->getClassNav() ?>"></a>
                 <a href="/PopQuiz/deconnexion" class="imgNav deco <?php echo $header->getClassNav() ?>"></a>
             </ul>
         </nav>

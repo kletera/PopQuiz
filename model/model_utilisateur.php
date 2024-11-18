@@ -65,9 +65,9 @@ class Utilisateur
         $this->mdp = $mdp;
         return $this;
     }
-    public function setNomSession(?string $nomSession): self
+    public function setNomSession(?string $nom_session): self
     {
-        $this->nomSession = $nomSession;
+        $this->nom_session = $nom_session;
         return $this;
     }
 
@@ -80,6 +80,7 @@ class Utilisateur
         $nom = $this->getNom();
         $email = $this->getEmail();
         $mdp = $this->getMdp();
+        $role= 1;
 
         //1Er Etape : Instancier l'objet de connexion PDO
         $bdd = new PDO("mysql:host={$_ENV['DBhost']};dbname={$_ENV['DBname']}", "{$_ENV['login']}", "{$_ENV['password']}", array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
@@ -89,13 +90,14 @@ class Utilisateur
         //Try...Catch
         try {
             //2nd Etape : préparer ma requête INSERT INTO
-            $req = $bdd->prepare('INSERT INTO utilisateur(prenom, nom, email, mdp) VALUE (?,?,?,?)');
+            $req = $bdd->prepare('INSERT INTO utilisateur(prenom, nom, email, mdp, id_roleUtilisateur) VALUE (?,?,?,?,?)');
 
             //3eme Etape : Binding de Paramètre pour relier chaque ? à sa donnée
             $req->bindParam(1, $prenom, PDO::PARAM_STR);
             $req->bindParam(2, $nom, PDO::PARAM_STR);
             $req->bindParam(3, $email, PDO::PARAM_STR);
             $req->bindParam(4, $mdp, PDO::PARAM_STR);
+            $req->bindParam(5, $role, PDO::PARAM_STR);
 
             //4eme Etape : exécution de la requête
             $req->execute();
@@ -116,7 +118,7 @@ class Utilisateur
         //Try...Catch
         try {
             //2nd Etape : préparer ma requête SELECT
-            $req = $bdd->prepare('SELECT id_utilisateur, nom, prenom, email, mdp FROM utilisateur');
+            $req = $bdd->prepare('SELECT id_utilisateur, nom, prenom, email, mdp, nom_session, id_roleUtilisateur FROM utilisateur');
 
             //3eme Etape : executer la requête
             $req->execute();
@@ -145,7 +147,7 @@ class Utilisateur
         //Try...Catch
         try {
             //2nd Etape : préparer ma requête SELECT
-            $req = $bdd->prepare('SELECT id_utilisateur, email, mdp, prenom, nom FROM utilisateur WHERE email = ?');
+            $req = $bdd->prepare('SELECT id_utilisateur, email, mdp, prenom, nom, nom_session, id_roleUtilisateur FROM utilisateur WHERE email = ?');
 
             //3Eme Etape : introduire le login de l'utilisateur dans ma requête avec du Binding de Paramètre
             $req->bindParam(1, $email, PDO::PARAM_STR);
