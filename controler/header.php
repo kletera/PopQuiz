@@ -33,7 +33,7 @@ class ControlerHeader{
         }
     }
      public function compteLink():void{
-         if($_SESSION['id_roleUtilisateur']==2){
+         if($_SESSION['id_roleUtilisateur']==1){
              $this->setLinkCompte("/PopQuiz/moncompte");
          }else{
              $this->setLinkCompte("/PopQuiz/moncompteAdmin");

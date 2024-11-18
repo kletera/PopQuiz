@@ -9,7 +9,7 @@
 
             <input type="text" class="form-control mt-3" name="firstName" value="<?php echo $firstName ?>">
 
-            <input type="text" class="form-control mt-3" name="session" value="<?php echo $session ?>" placeholder="Formation">
+            <input type="text" class="form-control mt-3" name="session" value="<?php echo $session ?>">
 
         </div>
 

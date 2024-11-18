@@ -138,17 +138,14 @@ class ControlerAccueil
                         //Si on trouve le login en BDD
                         //Je vérifie la correspondance des mots de passe
                         if (!password_verify($tab['mdpCo'], $data[0]['mdp'])) {
-                            var_dump(password_verify($tab['mdpCo'], $data[0]['mdp']));
-                            print_r($data[0]['mdp']);
-                            print_r($tab['mdpCo']);
                             //Si les mots de passe ne correspondent pas, j'affiche un message d'erre(ur
                             $this->setMessageCo("Erreur dans l'email et/ou dans le mot de passe 2 !");
                         } else {
                             //Si les mots de passe correspondent, j'enregistre les données de l'utilisateur en SESSION, et j'affiche un message de confimation
                             
                         }
+                        
                         $linkCompte= new ControlerHeader();
-                        $linkCompte->compteLink();
                         $_SESSION['mdp'] = $data[0]['mdp'];
                         $_SESSION['email'] = $data[0]['email'];
                         $_SESSION['id_utilisateur'] = $data[0]['id_utilisateur'];
@@ -157,7 +154,8 @@ class ControlerAccueil
                         $_SESSION['id_roleUtilisateur'] = $data[0]['id_roleUtilisateur'];
                         $_SESSION['nom_session']=$data[0]['nom_session'];
                         $this->setMessageCo("{$_SESSION['email']} connecté avec succès!");
-                        // header("Location:{$linkCompte->getLinkCompte()}");
+                        $linkCompte->compteLink();
+                        header("Location:{$linkCompte->getLinkCompte()}");
                     }
                 }
             }
@@ -165,7 +163,6 @@ class ControlerAccueil
     }
 
 }
-echo  $_SESSION['id_roleUtilisateur'];
 $controler = new ControlerAccueil();
 $controler->registerUser();
 $controler->logInUser();
