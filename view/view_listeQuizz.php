@@ -56,15 +56,15 @@
                 </h2>
                 <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse">
                     <div class="accordion-body">
-                        <input type="checkbox" id="15" />
-                        <label for="<15">
+                        
+                        <label for="<15"><input type="checkbox" id="15" name="duration" /> 
                             < 15 min</label><br>
 
-                                <input type="checkbox" id="15-30" />
-                                <label for="15-30">15min - 30min</label><br>
+                                
+                                <label for="15-30"><input type="checkbox" id="15-30" name="duration" /> 15min - 30min</label><br>
 
-                                <input type="checkbox" id="30" />
-                                <label for=">30">> 30min</label>
+                                
+                                <label for=">30"><input type="checkbox" id="30" name="duration" /> > 30min</label>
                     </div>
                 </div>
             </div>
@@ -82,14 +82,14 @@
                         <input type="checkbox" id="anglais" />
                         <label for="anglais">Anglais</label><br>
 
-                        <input type="checkbox" id="backEnd" />
-                        <label for="backEnd">Back-End</label><br>
+                        <input type="checkbox" id="backend" />
+                        <label for="backend">Back-End</label><br>
 
                         <input type="checkbox" id="conception" />
                         <label for="conception">Conception</label><br>
 
-                        <input type="checkbox" id="frontEnd" />
-                        <label for="frontEnd">Front-End</label><br>
+                        <input type="checkbox" id="frontend" />
+                        <label for="frontend">Front-End</label><br>
 
                         <input type="checkbox" id="gestionDeProjet" />
                         <label for="gestionDeProjet">Gestion de Projet</label><br>

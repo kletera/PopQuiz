@@ -5,7 +5,7 @@ const QUIZ = [
     titre: "Regular Verbs",
     description:
       "Êtes-vous prêt à mettre votre grammaire anglaise à l'épreuve ? Ce quiz vous permet de réviser les règles essentielles et d'affiner votre maîtrise des structures grammaticales.",
-    durée: 20,
+    durée: 35,
     difficulté: 3,
     catégorie: "Anglais",
   },
@@ -27,7 +27,7 @@ const QUIZ = [
       "Ce quiz couvre les éléments essentiels du langage HTML : balises, structure de page, et bonnes pratiques. Parfait pour les débutants ou pour réviser vos fondamentaux !",
     durée: 45,
     difficulté: 2,
-    catégorie: "Front-End",
+    catégorie: "frontend",
   },
   {
     id: 4,
@@ -37,7 +37,7 @@ const QUIZ = [
       "Testez vos connaissances de base en CSS ! Ce quiz explore les concepts essentiels : sélection de styles, propriétés de mise en forme, couleurs, et plus encore. Idéal pour débutants et pour réviser les bases du design web !",
     durée: 10,
     difficulté: 1,
-    catégorie: "Back-End",
+    catégorie: "backend",
   },
   {
     id: 5,
@@ -53,7 +53,6 @@ const QUIZ = [
 
 function generateDifficulty(difficulty) {
   let difficultyClass;
-
   if (difficulty <= 2) {
     difficultyClass = "dotFacile";
   } else if (difficulty < 4) {
@@ -61,12 +60,12 @@ function generateDifficulty(difficulty) {
   } else {
     difficultyClass = "dotDifficile";
   }
-
   return [...Array(5)]
     .map((_, index) => {
       const classToApply = index < difficulty ? difficultyClass : "";
       return `<span class="dot ${classToApply}"></span>`;
-    }).join("");
+    })
+    .join("");
 }
 
 function CreateQuiz(quizData) {
@@ -89,14 +88,18 @@ function CreateQuiz(quizData) {
                       quizData.description
                     }</p>
                     <p class="card-text">
-                    <small class="text-body-secondary quizCategory"><em>${quizData.catégorie}</em></small></p>
+                    <small class="text-body-secondary quizCategory"><em>${
+                      quizData.catégorie
+                    }</em></small></p>
                 </div>
             </div>
                 <div class="col-3 info ">
                     <div class="row m-0 ">
                         <div class="col time pt-3">
                             <h5>Durée</h5>
-                            <p class="quizDuration">${quizData.durée} minutes</p>
+                            <p class="quizDuration">${
+                              quizData.durée
+                            } minutes</p>
                         </div>
                     </div>
                     <div class="row">
@@ -141,127 +144,91 @@ function searchQuiz() {
   });
 }
 
-function applyFilters() {
-  const searchQuery = document.getElementById("searchInput").value.toLowerCase();
-  const selectedDifficulties = getSelectedDifficulties();
-  const selectedCategories = getSelectedCategories();
-  const selectedDurations = getSelectedDurations();
+function getSelectedDifficulties() {
+  const difficulties = [];
+  if (document.getElementById("facile").checked) difficulties.push("facile");
+  if (document.getElementById("moyenne").checked) difficulties.push("moyenne");
+  if (document.getElementById("difficile").checked)
+    difficulties.push("difficile");
+  console.log(difficulties);
+  return difficulties;
+}
 
-  const quizCards = document.querySelectorAll(".cardQuiz");
+
+// Filtre CATEGORIES
+function getSelectedCategories() {
+  const categories = [];
+  const categoryCheckboxes = document.querySelectorAll(
+    '.categoriesCheckbox input[type="checkbox"]:checked'
+  );
+  categoryCheckboxes.forEach(checkbox => {
+    categories.push(checkbox.id);
+  });
+  console.log(categories);
+  return categories;
+}
+
+function filterByCategory() {
+  const selectedCategories = getSelectedCategories(); // Récupère les catégories sélectionnées
+  const quizCards = document.querySelectorAll(".cardQuiz"); // Récupère toutes les cartes de quiz
 
   quizCards.forEach((quizCard) => {
-    const title = quizCard.querySelector(".quizTitle").textContent.toLowerCase();
-    const description = quizCard.querySelector(".quizDescription").textContent.toLowerCase();
-    const categories = quizCard.querySelector(".quizCategory").textContent.toLowerCase().trim();
-    
-    // Vérification de la difficulté
-    const difficultyDots = quizCard.querySelectorAll(".dot");
-    let difficultyClass = "";
-    // Vérifier quelles classes sont présentes sur les dots pour déterminer la difficulté
-    const hasDotFacile = [...difficultyDots].some(dot => dot.classList.contains("dotFacile"));
-    const hasDotMoyenne = [...difficultyDots].some(dot => dot.classList.contains("dotMoyenne"));
-    const hasDotDifficile = [...difficultyDots].some(dot => dot.classList.contains("dotDifficile"));
+    const category = quizCard.querySelector(".quizCategory").textContent.trim().toLowerCase(); // Catégorie du quiz
 
-    if (hasDotFacile) {
-      difficultyClass = "facile";  // Si dotFacile est présent
-    } else if (hasDotMoyenne) {
-      difficultyClass = "moyenne"; // Si dotMoyenne est présent
-    } else if (hasDotDifficile) {
-      difficultyClass = "difficile"; // Si dotDifficile est présent
-    }
-    
-    const durationText = quizCard.querySelector(".quizDuration").textContent;
-    const duration = parseInt(durationText.replace(/\D/g, ""));
-
-    // Comparer avec la requête de recherche
-    const matchesSearch = searchQuery === "" || title.includes(searchQuery) || description.includes(searchQuery) || categories.includes(searchQuery);
-    
-    // Comparer les difficultés
-    const matchesDifficulty = selectedDifficulties.length === 0 || selectedDifficulties.includes(difficultyClass);
-    
-    // Comparer la durée
-    const matchesDuration = selectedDurations.some((durationRange) => {
-      if (durationRange === "<15") return duration < 15;
-      if (durationRange === "15-30") return duration >= 15 && duration <= 30;
-      if (durationRange === ">30") return duration > 30;
-      return false;
-    });
-
-    // Comparer les catégories
-    const matchesCategory = selectedCategories.length === 0 || selectedCategories.some((category) => categories.includes(category));
-
-    // // Si toutes les conditions de filtrage sont remplies, afficher le quiz
-    // if (matchesDuration || matchesCategory) {
-    //   quizCard.style.display = "block";
-    // } else {
-    //   quizCard.style.display = "none";
-    // }
-
-    //     if (matchesDuration || matchesCategory) {
-    //   quizCard.style.display = "block";
-    // } else {
-    //   quizCard.style.display = "none";
-    // }
-    console.log({
-      title,
-      description,
-      categories,
-      selectedCategories,
-      matchesSearch,
-      matchesDifficulty,
-      matchesDuration,
-      matchesCategory,
-      difficultyClass,
-      duration,
-      durationText,
-      selectedDifficulties,
-      selectedDurations,
-      searchQuery,
-    });
-
-    // Appliquer la logique combinée
-    if ((matchesSearch || searchQuery === "") && matchesDifficulty && matchesDuration && matchesCategory) {
-      console.log(`Afficher le quiz: ${title}`);
-      quizCard.style.display = "block";
+    // Si aucune catégorie n'est sélectionnée ou si la catégorie du quiz est dans la sélection, affichez le quiz
+    if (selectedCategories.length === 0 || selectedCategories.includes(category)) {
+      quizCard.style.display = "block"; // Affiche la carte de quiz
     } else {
-      console.log(`Cacher le quiz: ${title}`);
-      quizCard.style.display = "none";
+      quizCard.style.display = "none"; // Cache la carte de quiz
     }
   });
 }
 
+document.querySelectorAll('.categoriesCheckbox input[type="checkbox"]').forEach(checkbox => {
+  checkbox.addEventListener('change', filterByCategory);
+});
 
-function getSelectedDifficulties(){
-    const difficulties = [];
-    if (document.getElementById("facile").checked) difficulties.push('facile');
-    if (document.getElementById("moyenne").checked) difficulties.push('moyenne');
-    if (document.getElementById("difficile").checked) difficulties.push('difficile');
-    console.log(difficulties);
-    return difficulties;
-}
 
+
+// Filtre DURATION
 function getSelectedDurations() {
-    const durations = [];
-    if (document.getElementById("15").checked) durations.push('<15');
-    if (document.getElementById("15-30").checked) durations.push('15-30');
-    if (document.getElementById("30").checked) durations.push('>30');
-    console.log(durations);
-    return durations;
+  const durations = [];
+  if (document.getElementById("15").checked) durations.push("<15");
+  if (document.getElementById("15-30").checked) durations.push("15-30");
+  if (document.getElementById("30").checked) durations.push(">30");
+  return durations;
 }
 
-function getSelectedCategories() {
-    const categories = [];
-    const categoryCheckboxes = document.querySelectorAll('.categoriesCheckbox input[type="checkbox"]:checked');
-    categoryCheckboxes.forEach(checkbox => {
-        categories.push(checkbox.nextElementSibling.textContent.trim().toLowerCase());
-    });
-    console.log(categories);
-    return categories;
+function filterByDuration() {
+  const selectedDurations = getSelectedDurations();
+
+  const filteredQuiz = QUIZ.filter((quiz) => {
+    if (selectedDurations.length === 0) return true;
+    if (selectedDurations.includes("<15") && quiz.durée < 15) return true;
+    if (selectedDurations.includes("15-30") &&quiz.durée >= 15 && quiz.durée <= 30) return true;
+    if (selectedDurations.includes(">30") && quiz.durée > 30) return true;
+
+    return false;
+  });
+  updateQuizDisplay(filteredQuiz);
 }
 
-document.getElementById("searchInput").addEventListener('input', searchQuiz);
-// document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
-//     checkbox.addEventListener('change', applyFilters);
-// });
+function updateQuizDisplay(filteredQuiz) {
+  const quizContainer = document.getElementById("quizContainer");
+  quizContainer.innerHTML = "";
+  filteredQuiz.forEach((quiz) => CreateQuiz(quiz));
+}
+// Fin filtre DURATION
 
-QUIZ.forEach((quiz) => CreateQuiz(quiz));
+// Lorsque l'utilisateur change les filtres de durée, on applique le filtrage
+document.querySelectorAll('input[name="duration"]').forEach((checkbox) => {
+  checkbox.addEventListener("change", filterByDuration);
+});
+// Initialisation de l'affichage des quiz au chargement de la page
+filterByDuration();
+
+
+
+document.getElementById("searchInput").addEventListener("input", searchQuiz);
+
+
