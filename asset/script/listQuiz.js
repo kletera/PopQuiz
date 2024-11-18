@@ -112,123 +112,34 @@ function CreateQuiz(quizData) {
   quizContainer.appendChild(quizCard);
 }
 
-// function searchQuiz() {
-//   const searchQuery = document
-//     .getElementById("searchInput")
-//     .value.toLowerCase();
-//   const quizCards = document.querySelectorAll(".cardQuiz");
+function searchQuiz() {
+  const searchQuery = document
+    .getElementById("searchInput")
+    .value.toLowerCase();
+  const quizCards = document.querySelectorAll(".cardQuiz");
 
-//   quizCards.forEach((quizCard) => {
-//     const title = quizCard
-//       .querySelector(".quizTitle")
-//       .textContent.toLowerCase();
-//     const description = quizCard
-//       .querySelector(".quizDescription")
-//       .textContent.toLowerCase();
-//     const categories = quizCard
-//       .querySelector(".quizCategory")
-//       .textContent.toLowerCase();
+  quizCards.forEach((quizCard) => {
+    const title = quizCard
+      .querySelector(".quizTitle")
+      .textContent.toLowerCase();
+    const description = quizCard
+      .querySelector(".quizDescription")
+      .textContent.toLowerCase();
+    const categories = quizCard
+      .querySelector(".quizCategory")
+      .textContent.toLowerCase();
 
-//     if (
-//       title.includes(searchQuery) ||
-//       description.includes(searchQuery) ||
-//       categories.includes(searchQuery)
-//     ) {
-//       quizCard.style.display = "block";
-//     } else {
-//       quizCard.style.display = "none";
-//     }
-//   });
-// }
-
-// document.getElementById("searchInput").addEventListener("input", searchQuiz);
-
-// function filterQuiz(){
-//     const searchQuery = document.getElementById("searchInput").value.toLowerCase();
-
-//     const selectedDifficulties = getSelectedDifficulties();
-//     const selectedCategories = getSelectedCategories();
-//     const selectedDurations = getSelectedDurations();
-
-//     const quizCards = document.querySelectorAll(".cardQuiz");
-
-//     quizCards.forEach(quizCard => {
-//         const title = quizCard.querySelector(".quizTitle").textContent.toLowerCase();
-//         const description = quizCard.querySelector(".quizDescription").textContent.toLowerCase();
-//         const categories = quizCard.querySelector(".quizCategory").textContent.toLowerCase().split(" - ");
-
-//         const difficultyClass = quizCard.querySelector(".dot")?.classList;
-//         const difficulty =
-//           difficultyClass?.contains("dotDifficile")
-//             ? "difficile"
-//             : difficultyClass?.contains("dotMoyenne")
-//             ? "moyenne"
-//             : "facile";
-
-//         const durationText = quizCard.querySelector(".quizDuration").textContent;
-//         const duration = parseInt(durationText.replace(/\D/g, ''));
-
-
-
-//         const matchesSearch = title.includes(searchQuery) || description.includes(searchQuery) || categories.includes(searchQuery);
-//         const matchesDifficulty = selectedDifficulties.length === 0 || selectedDifficulties.includes(difficulty);
-//         const matchesDuration = selectedDurations.some(durationRange => {
-//             if (durationRange === '<15') return duration < 15;
-//             if (durationRange === '15-30') return duration >= 15 && duration <= 30;
-//             if (durationRange === '>30') return duration > 30;
-//             return false;
-//         });
-
-//         const matchesCategory = selectedCategories.length === 0 || selectedCategories.some(category => categories.includes(category));
-
-//         if (matchesSearch && matchesDifficulty && matchesDuration && matchesCategory) {
-//             quizCard.style.display = "block"; // Afficher le quiz
-//         } else {
-//             quizCard.style.display = "none"; // Cacher le quiz
-//         }
-//     });
-// }
-
-// function applyFilters() {
-//   const searchQuery = document.getElementById("searchInput").value.toLowerCase();
-//   const selectedDifficulties = getSelectedDifficulties();
-//   const selectedCategories = getSelectedCategories();
-//   const selectedDurations = getSelectedDurations();
-
-//   const quizCards = document.querySelectorAll(".cardQuiz");
-
-//   quizCards.forEach((quizCard) => {
-//     const title = quizCard.querySelector(".quizTitle").textContent.toLowerCase();
-//     const description = quizCard.querySelector(".quizDescription").textContent.toLowerCase();
-//     const categories = quizCard.querySelector(".quizCategory").textContent.toLowerCase();
-//     const difficultyClass = quizCard.querySelectorAll(".dot")?.classList;
-//     const difficulty =
-//       difficultyClass?.contains("dotDifficile")
-//         ? "difficile"
-//         : difficultyClass?.contains("dotMoyenne")
-//         ? "moyenne"
-//         : "facile";
-//     const durationText = quizCard.querySelector(".quizDuration").textContent;
-//     const duration = parseInt(durationText.replace(/\D/g, ""));
-
-//     const matchesSearch = title.includes(searchQuery) || description.includes(searchQuery) || categories.some((category) => category.includes(searchQuery));
-//     const matchesDifficulty = selectedDifficulties.length === 0 || selectedDifficulties.includes(difficulty);
-//     const matchesDuration = selectedDurations.some((durationRange) => {
-//       if (durationRange === "<15") return duration < 15;
-//       if (durationRange === "15-30") return duration >= 15 && duration <= 30;
-//       if (durationRange === ">30") return duration > 30;
-//       return false;
-//     });
-//     const matchesCategory = selectedCategories.length === 0 || selectedCategories.some((category) => categories.includes(category));
-
-//     if (matchesSearch && matchesDifficulty && matchesDuration && matchesCategory) {
-//       quizCard.style.display = "block";
-//     } else {
-//       quizCard.style.display = "none";
-//     }
-//   });
-// }
-
+    if (
+      title.includes(searchQuery) ||
+      description.includes(searchQuery) ||
+      categories.includes(searchQuery)
+    ) {
+      quizCard.style.display = "block";
+    } else {
+      quizCard.style.display = "none";
+    }
+  });
+}
 
 function applyFilters() {
   const searchQuery = document.getElementById("searchInput").value.toLowerCase();
@@ -241,8 +152,6 @@ function applyFilters() {
   quizCards.forEach((quizCard) => {
     const title = quizCard.querySelector(".quizTitle").textContent.toLowerCase();
     const description = quizCard.querySelector(".quizDescription").textContent.toLowerCase();
-    
-    // Récupérer la catégorie du quiz et la rendre insensible à la casse
     const categories = quizCard.querySelector(".quizCategory").textContent.toLowerCase().trim();
     
     // Vérification de la difficulté
@@ -265,7 +174,7 @@ function applyFilters() {
     const duration = parseInt(durationText.replace(/\D/g, ""));
 
     // Comparer avec la requête de recherche
-    const matchesSearch = searchQuery !== "" && (title.includes(searchQuery) || description.includes(searchQuery) || categories.includes(searchQuery));
+    const matchesSearch = searchQuery === "" || title.includes(searchQuery) || description.includes(searchQuery) || categories.includes(searchQuery);
     
     // Comparer les difficultés
     const matchesDifficulty = selectedDifficulties.length === 0 || selectedDifficulties.includes(difficultyClass);
@@ -321,6 +230,7 @@ function applyFilters() {
   });
 }
 
+
 function getSelectedDifficulties(){
     const difficulties = [];
     if (document.getElementById("facile").checked) difficulties.push('facile');
@@ -349,9 +259,9 @@ function getSelectedCategories() {
     return categories;
 }
 
-document.getElementById("searchInput").addEventListener('input', applyFilters);
-document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
-    checkbox.addEventListener('change', applyFilters);
-});
+document.getElementById("searchInput").addEventListener('input', searchQuiz);
+// document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+//     checkbox.addEventListener('change', applyFilters);
+// });
 
 QUIZ.forEach((quiz) => CreateQuiz(quiz));
