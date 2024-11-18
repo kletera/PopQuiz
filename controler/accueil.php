@@ -6,13 +6,11 @@ class ControlerAccueil
 {
     private ?string $message;
     private ?string $messageCo;
-    private ?string $classNav;
 
     public function __construct()
     {
         $this->message = '';
         $this->messageCo = '';
-        $this->classNav = "displayNone"; //J'enlève les liens Mon Compte et Déconnexion
     }
 
     //Getter et Setter
@@ -142,20 +140,18 @@ class ControlerAccueil
                             $this->setMessageCo("Erreur dans l'email et/ou dans le mot de passe 2 !");
                         } else {
                             //Si les mots de passe correspondent, j'enregistre les données de l'utilisateur en SESSION, et j'affiche un message de confimation
-                            
+                            $linkCompte= new ControlerHeader();
+                            $_SESSION['mdp'] = $data[0]['mdp'];
+                            $_SESSION['email'] = $data[0]['email'];
+                            $_SESSION['id_utilisateur'] = $data[0]['id_utilisateur'];
+                            $_SESSION['nom'] = $data[0]['nom'];
+                            $_SESSION['prenom'] = $data[0]['prenom'];
+                            $_SESSION['id_roleUtilisateur'] = $data[0]['id_roleUtilisateur'];
+                            $_SESSION['nom_session']=$data[0]['nom_session'];
+                            $this->setMessageCo("{$_SESSION['email']} connecté avec succès!");
+                            $linkCompte->compteLink();
+                            header("Location:{$linkCompte->getLinkCompte()}");
                         }
-                        
-                        $linkCompte= new ControlerHeader();
-                        $_SESSION['mdp'] = $data[0]['mdp'];
-                        $_SESSION['email'] = $data[0]['email'];
-                        $_SESSION['id_utilisateur'] = $data[0]['id_utilisateur'];
-                        $_SESSION['nom'] = $data[0]['nom'];
-                        $_SESSION['prenom'] = $data[0]['prenom'];
-                        $_SESSION['id_roleUtilisateur'] = $data[0]['id_roleUtilisateur'];
-                        $_SESSION['nom_session']=$data[0]['nom_session'];
-                        $this->setMessageCo("{$_SESSION['email']} connecté avec succès!");
-                        $linkCompte->compteLink();
-                        header("Location:{$linkCompte->getLinkCompte()}");
                     }
                 }
             }
