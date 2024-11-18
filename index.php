@@ -9,43 +9,50 @@ $path = isset($url['path']) ? $url['path'] : '/';
 
 /*--------------------------ROUTER -----------------------------*/
 
+include './utils/functions.php';
+
 //test de la valeur $path dans l'URL et import de la ressource
 switch ($path) {
 
     case $path === "/PopQuiz/":
         include './utils/env.php';
         include './model/model_utilisateur.php';
-        include './utils/functions.php';
+        include './controler/header.php';
         include './controler/accueil.php';
         include './view/view_header.php';
         include './view/view_accueil.php';
         include './view/view_footer.html';
         break;
     case $path === "/PopQuiz/moncompte";
+        include './controler/header.php';
         include './controler/compte.php';
         include './view/view_header.php';
         include './view/view_compte.php';
         include './view/view_footer.html';
         break;
     case $path === "/PopQuiz/moncompteAdmin";
+        include './controler/header.php';
         include "./controler/compteAdmin.php";
         include './view/view_header.php';
         include './view/view_compte_admin.php';
         include './view/view_footer.html';
         break;
     case $path === "/PopQuiz/listequiz":
+        include './controler/header.php';
         include './controler/listQuiz.php';
         include './view/view_header.php';
         include './view/view_listeQuizz.php';
         include './view/view_footer.html';
         break;
     case $path === "/PopQuiz/quizz1";
+        include './controler/header.php';
         include './controler/quizz1.php';
         include './view/view_header.php';
         include './view/view_quizz1.php';
         include './view/view_footer.html';
         break;
     case $path === "/PopQuiz/quizzHTML";
+        include './controler/header.php';
         include "./controler/presentationQuizz.php";
         include './view/view_header.php';
         include './view/view_presentationQuizz1.php';

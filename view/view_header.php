@@ -16,9 +16,9 @@
             <img src="./asset/img/logoAdrar.png" alt="Logo Adrar" height="82px">
             <h1>NUMERIQUIZZ</h1>
             <ul style="margin: 0; align-items: center;">
-                <a href="/PopQuiz/listequiz" class="imgNav quizz "></a>
-                <a href="/PopQuiz/moncompte" class="imgNav compte"></a>
-                <a href="/PopQuiz/deconnexion" class="imgNav deco"></a>
+                <a href="/PopQuiz/listequiz" class="imgNav quizz <?php echo $header->getClassNav() ?>"></a>
+                <a href="<?php echo $header->compteLink() ?>" class="imgNav compte <?php echo $header->getClassNav() ?>"></a>
+                <a href="/PopQuiz/deconnexion" class="imgNav deco <?php echo $header->getClassNav() ?>"></a>
             </ul>
         </nav>
     </header>

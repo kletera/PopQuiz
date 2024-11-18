@@ -5,21 +5,20 @@
     <form class="row">
         <div class="col-6">
 
-            <input type="text" class="form-control" name="pseudo" value="<?php echo $pseudo ?>">
-
             <input type="text" class="form-control mt-3" name="lastName" value="<?php echo $lastName ?>">
 
             <input type="text" class="form-control mt-3" name="firstName" value="<?php echo $firstName ?>">
+
+            <input type="text" class="form-control mt-3" name="session" value="<?php echo $session ?>" placeholder="Formation">
 
         </div>
 
         <div class="col-6">
 
-            <input type="email" class="form-control" name="email" value="<?php echo $email ?>">
+            <input type="email" class="form-control mt-3" name="email" value="<?php echo $email ?>">
 
             <input type="password" class="form-control mt-3" name="password" value="<?php echo $password ?>">
 
-            <input type="text" class="form-control mt-3" name="session" value="<?php echo $session ?>">
         </div>
     </form>
     <button type="button" class="btn btnNormal mt-2">Enregistrer</button>
